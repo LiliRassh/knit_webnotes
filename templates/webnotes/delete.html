@@ -1,0 +1,26 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+
+{% block content %}
+    <div class="container">
+        <h1 class="title">{{ title }}</h1>
+        <div class="card" id="card_info">
+            <div class="card-header" id="heading_info">
+                <h4>Подтвердите удаление записи:</h4>
+            </div>
+            <div class="card card-body">
+                <h5>{{ notes.project_name }} / {{ notes.status}} / {{notes.create_date}}</h5>
+
+                <form action="/webnotes/delete/{{ notes.id }}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Удалить" class="btn btn-secondary" style="width: 200px">
+                </form>
+            </div>
+            <h5 class="card-title">
+                <a class="btn btn-link" href="/webnotes" role="button">Вернуться к записям в Веб-блокноте</a>
+            </h5>
+        </div>
+    </div>
+{% endblock content %}

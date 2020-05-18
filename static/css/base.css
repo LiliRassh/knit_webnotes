@@ -1,0 +1,53 @@
+body {
+    padding-top: 5rem;
+    /*background-image: url("../img/bg-arany-white.jpg");
+    background-size: cover;*/
+}
+
+.starter-template {
+    padding: 3rem 1.5rem;
+    text-align: center;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+     }
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+   }
+#index_bg h1{
+    color: #7FFF00;
+    font-weight: bold;
+}
+
+img {
+    width: 250px;
+    size: cover;
+}
+
+#content {
+    margin-top: 40px;
+    }
+.row{
+    margin: 50px;
+}
+.title{
+    color: #c5648f;
+    font-weight: bold;
+    text-shadow:2px 2px 4px #6c757d;
+}
+#foot {
+    text-align: right;
+}
+div.row{
+    margin: 10px 50px;
+}
+/*c5648f  cyan - 47b5b6  светло-берюзовый b9d3c6  #ffe5d4*/

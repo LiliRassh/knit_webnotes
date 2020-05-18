@@ -1,0 +1,49 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+
+{% block content %}
+
+    <div id="index_bg" class="contanier">
+        <h1 style="text-shadow:7px 7px 7px grey; color: #c5648f;">Веб-блокнот по вязанию</h1>
+        <h3 style="text-shadow:7px 7px 7px grey;">Планируй. Сохраняй. Делись. Вяжи))</h3>
+        <h3>
+            <a href="/webnotes/index" role="button" target="_blank" class="btn btn-info" style="margin-top: 20px;">Открыть блокнот</a></h3>
+    </div>
+    <div id="content" class="contanier">
+        <div>
+            <h5>Популярные узоры</h5>
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="../../static/img/images/ajup.jpg">
+                </div>
+                <div class="col-md-4">
+                    <img src="../../static/img/images/djakard.jpg" >
+                </div>
+                <div class="col-md-4">
+                    <img src="../../static/img/images/rezinka.jpg" ></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="../../static/img/images/rezinka2.jpg">
+                </div>
+                <div class="col-md-4">
+                    <img src="../../static/img/images/rezinka3.jpg" >
+                </div>
+                <div class="col-md-4">
+                    <img src="../../static/img/images/rezinka4.jpg" ></div>
+            </div>
+            <!--<div class="row">-->
+                <!--<div class="col-md-4">-->
+                    <!--<img src="../../static/img/images/ajup.jpg">-->
+                <!--</div>-->
+                <!--<div class="col-md-4">-->
+                    <!--<img src="../../static/img/images/arany.jpg" >-->
+                <!--</div>-->
+                <!--<div class="col-md-4">-->
+                    <!--<img src="../../static/img/images/prostoy.jpg" ></div>-->
+            <!--</div>-->
+        </div>
+    </div>
+{% endblock content %}

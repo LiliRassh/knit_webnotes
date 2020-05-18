@@ -1,0 +1,29 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+
+{% block content %}
+    <div class="container">
+        <h1 class="title">{{ title }}</h1>
+
+        <div class="card">
+            <div class="card-header">
+                {{ notes.craft }}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{notes.project_name}}</h5>
+                <img src="/media/{{ notes.image }}" width="30%" align="left" style="margin-right: 50px">
+                <p class="card-text"><b>Дата начала:</b> {{ notes.start_date }} - <b>Дата окончания:</b> {{ notes.end_date }}</p>
+                <p class="card-text"><b>Кому:</b> {{ notes.for_who }}</p>
+                <p class="card-text"><b>Примечание:</b> {{ notes.note }}</p>
+                <p class="card-text"><b>Статус:</b> {{ notes.status }}</p>
+                <p class="card-text">
+                    <small class="text-muted">Запись добавлена: {{ notes.create_date }}</small>
+                </p>
+                <a class="btn btn-link" href="/webnotes" role="button">Вернуться к записям в Веб-блокноте</a>
+          </div>
+        </div>
+
+    </div>
+{% endblock content %}
