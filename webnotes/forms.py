@@ -10,6 +10,8 @@ class NotesForm(forms.ModelForm):
     craft = forms.CharField(label='Вид рукоделия')
     image = forms.FileField(label='Фото изделия')
     note = forms.CharField(label='Описание проекта', widget=forms.Textarea)
+    # status = forms.ChoiceField(label='Статус', choices=((1, "В процессе"), (2, "Завершенный"),
+    #                                                     (3, "Планируемый"), (4, "На паузе")))
 
     class Meta:
         model = Notes

@@ -25,12 +25,31 @@
               </li>
             </ul>
             <ul class="navbar-nav navbar-right">
-              <li class="nav-item">
-                <a class="nav-link" href="/accounts/sign_up">Регистрация</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/accounts/sign_in">Вход</a>
-              </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="" style="margin-right: 20px">
+                        Привет,
+                        {% if user.is_authenticated %}
+                        {{ user.username }}!
+                        {% else %}
+                            Гость!
+                        {% endif %}
+                    </a>
+                </li>
+                {% if not user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/accounts/sign_up">Регистрация</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/accounts/sign_in">Вход</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/accounts/profile">Профиль</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/accounts/sign_out">Выход</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </div>
