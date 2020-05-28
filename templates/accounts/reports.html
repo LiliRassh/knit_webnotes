@@ -1,0 +1,21 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+
+{% block content %}
+    <div class="container">
+        <div>
+            <h1 class="title">{{ title }}</h1>
+        </div>
+        <h5 style="color: {{ color_mess }}">
+            {{ report_mess }}
+        </h5>
+        <!--<h5>-->
+            <!--login: {{ login }}<br>-->
+            <!--pass1: {{ pass1 }}<br>-->
+            <!--pass2: {{ pass2 }}<br>-->
+            <!--email: {{ email }}<br>-->
+        <!--</h5>-->
+    </div>
+{% endblock content%}

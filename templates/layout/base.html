@@ -1,30 +1,38 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-    <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Проекты по вязанию">
     <meta name="author" content="Расщупкина Лилия">
     <meta name="generator" content="Jekyll v3.8.6">
-    <title>Вязание.Веб блокнот - {% block title %}{% endblock title %} </title>
+    <title>Вязание.Веб-блокнот - {% block title %}{% endblock title %}</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/starter-template/">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="icon" href="{% static 'img/favicon.png' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-  </head>
-    <body>
-        <header>
-            {% include 'layout/nav.html' %}
-        </header>
-        <main role="main" class="container">
-            {% block content %}{% endblock content %}
-        </main>
-        <footer>
-            {% include 'layout/footer.html' %}
-        </footer>
-        <script src="https://code.jquery.com/jquery-3.5.0.js" integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script>
-    </body>
+    <link rel="stylesheet" href="{% static 'css/sticky-footer.css' %}">
+    <!--<link href="{% static 'css/parallax-slider.css' %}" rel="stylesheet">-->
+    <!--<link href="{% static 'css/hover.css' %}" rel="stylesheet">-->
+</head>
+<body >
+    <header>
+        {% include 'layout/nav.html' %}
+    </header>
+    <main role="main">
+        {% block content %}{% endblock content %}
+    </main>
+    <footer class="footer mt-auto py-3">
+        {% include 'layout/footer.html' %}
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.0.js" integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script>
+    <!--<script>-->
+        <!--$('.carousel').carousel()-->
+    <!--</script>-->
+    <!--<script src="{% static 'js/jquery.cslider.js' %}"></script>-->
+
+</body>
 </html>

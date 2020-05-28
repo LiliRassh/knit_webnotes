@@ -5,12 +5,13 @@
 
 {% block content %}
 <div class="container">
-    <h1 class="title">{{ title }}</h1>
-    {% if user == 'temp_admin' %}
+    <div>
+        <h1 class="title">{{ title }}</h1>
+    </div>
+    {% if user.username == 'superadmim1' %}
         <a href="/webnotes/create" id="btn_add_notes" class="btn btn-info" role="button">Добавить запись</a>
     {% endif %}
-    {% for note in notes  %}
-
+    {% for note in page_obj  %}
         <div class="card mb-3" style="max-width: 540px;">
             <div class="row no-gutters">
                 <div class="col-md-4">
@@ -29,13 +30,47 @@
                     </div>
                     <p>
                         <a class="btn-outline-success" href="/webnotes/details/{{ note.id }}" role="button">Посмотреть</a>
-                        <a class="btn-outline-info" href="/webnotes/edit/{{ note.id }}" role="button">Изменить</a>
-                        <a class="btn-outline-secondary" href="/webnotes/delete/{{ note.id }}" role="button">Удалить</a>
+                        {% if user.username == 'superadmim1' %}
+                            <a class="btn-outline-info" href="/webnotes/edit/{{ note.id }}" role="button">Изменить</a>
+                            <a class="btn-outline-secondary" href="/webnotes/delete/{{ note.id }}" role="button">Удалить</a>
+                        {% endif %}
                     </p>
                 </div>
             </div>
         </div>
     {% endfor %}
+    <div class="pagination" style="margin-top: 20px">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <!--Переход назад на предыдущую страницу-->
+                {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page=1">1</a>
+                </li>
+                {% endif %}
+                <!--Номер текущей страницы-->
+                <li class="page-item active">
+                    <a class="page-link" href="?page={{ page_obj.number }}">{{ page_obj.number }}</a>
+                </li>
+                <!--Переход вперед на следующую страницу-->
+                {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
 </div>
 <style>
     #btn_add_notes {

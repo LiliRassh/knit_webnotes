@@ -4,9 +4,41 @@
 
 
 {% block content %}
-
-    <div class="container">
-        <h1 class="title">{{ title }}</h1>
+    {% load static %}
+    <div id="content" class="container">
+        <div class="form_style">
+            <h2 class="title">{{ title }}</h2>
+            <hr>
+            <form id="form1" action="/accounts/sign_up" method="post" onsubmit="return false">
+            {% csrf_token %}
+            <p>
+                <label for="login">Логин:</label><br>
+                <input type="text" id="login" name="login" class="inp" required>
+                <div id="login_mess" class="mess"></div>
+            </p>
+            <p>
+                <label for="email">E-Mail:</label><br>
+                <input type="email" id="email" name="email" class="inp" required>
+            </p>
+            <p>
+                <label for="pass1">Пароль:</label><br>
+                <input type="password" id="pass1" name="pass1" class="inp" required>
+            </p>
+            <p>
+                <label for="pass2">Повтор:</label><br>
+                <input type="password" id="pass2" name="pass2" class="inp" required>
+            </p>
+            <p style="margin-top: 30px">
+                <input id="submit" type="submit" value="Отправить" class="btn btn-success" style="width: 150px">
+                <input type="reset" value="Очистить" class="btn btn-success" style="width: 150px">
+            </p>
+        </form>
+        </div>
     </div>
-
+    <style>
+    .inp {
+        width: 300px;
+    }
+</style>
+    <script src="{% static 'js/sign_up.js' %}"></script>
 {% endblock content %}
