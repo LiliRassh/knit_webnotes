@@ -3,6 +3,7 @@ from hashlib import md5
 from datetime import datetime
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.http import JsonResponse
 
 
 def sign_up(request):
@@ -22,6 +23,7 @@ def sign_up(request):
             data['color_mess'] = 'red'
             data['report_mess'] = 'Пароли не совпадают!'
         elif pass1 == '':
+            # Остальные проверки:
             pass
         else:
             # Техническая проверка:
@@ -76,4 +78,16 @@ def profile(request):
     data = dict()
     data['title'] = 'Профиль'
     return render(request, 'accounts/profile.html', context=data)
+
+
+def ajax_reg(request):
+    response = dict()
+    login_y = request.GET.get('login')
+
+    try:
+        User.objects.get(username=login_y)
+        response['message'] = 'Логин занят'
+    except User.DoesNotExist:
+        response['message'] = 'Логин свободен'
+    return JsonResponse(response)
 
