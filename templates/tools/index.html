@@ -1,0 +1,74 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+
+{% block content %}
+<div class="container">
+    <div>
+        <h1 class="title">{{ title }}</h1>
+    </div>
+    {% if user.username == 'superadmim1' %}
+        <a href="/tools/create" id="btn_add_notes" class="btn btn-info" role="button">Добавить запись</a>
+    {% endif %}
+
+    <!--{% for tool in tools  %}-->
+        <!--<div class="card mb-3" style="max-width: 540px;">-->
+            <!--<div class="row no-gutters">-->
+                <!--&lt;!&ndash;<div class="col-md-4">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<img src="/media/{{ note.image }}" class="card-img" alt="Фото изделия">&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--<div class="col-md-8">-->
+                    <!--<div class="card-body">-->
+                        <!--<h5 class="card-title">{{ tool.name }}</h5>-->
+                        <!--<p class="card-text">-->
+                            <!--Производитель: {{ tool.producer }}<br>Размер: {{ tool.size }}-->
+                        <!--</p>-->
+                        <!--<p class="card-text">-->
+                            <!--Тип: {{ note.type }}<br> Материал: {{ tool.material }}-->
+                        <!--</p>-->
+                    <!--</div>-->
+                    <!--<p>-->
+                        <!--<a class="btn-outline-success" href="/tools/details/{{ tool.id }}" role="button">Посмотреть</a>-->
+                        <!--{% if user.username == 'superadmim1' %}-->
+                            <!--<a class="btn-outline-info" href="/tools/edit/{{ tool.id }}" role="button">Изменить</a>-->
+                            <!--<a class="btn-outline-secondary" href="/tools/delete/{{ tool.id }}" role="button">Удалить</a>-->
+                        <!--{% endif %}-->
+                    <!--</p>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--{% endfor %}-->
+
+    <table class="table_index" border="1">
+        <tr>
+            <th>Вид</th>
+            <th>Размер</th>
+            <th>Фирма</th>
+            <th>Тип</th>
+            <th>Материал</th>
+            <th>Действие</th>
+        </tr>
+        {% for tool in tools %}
+            <tr>
+                <td>{{ tool.name }}</td>
+                <td>{{ tool.size }} мм</td>
+                <td>{{ tool.producer }}</td>
+                <td>{{ tool.type }}</td>
+                <td>{{ tool.material }}</td>
+                <td>
+                    |
+                    <a class="btn-outline-success" href="/tools/details/{{ tool.id }}" role="button">Посмотреть</a>
+                    |
+                    {% if user.username == 'superadmim1' %}
+                        <a class="btn-outline-info" href="/tools/edit/{{ tool.id }}" role="button">Изменить</a>
+                        |
+                        <a class="btn-outline-secondary" href="/tools/delete/{{ tool.id }}" role="button">Удалить</a>
+                        |
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock content %}

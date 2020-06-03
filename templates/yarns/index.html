@@ -1,0 +1,48 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+
+{% block content %}
+<div class="container">
+    <div>
+        <h1 class="title">{{ title }}</h1>
+    </div>
+    {% if user.username == 'superadmim1' %}
+        <a href="/yarns/create" id="btn_add_notes" class="btn btn-info" role="button">Добавить пряжу</a>
+    {% endif %}
+
+    <table class="table_index" border="1">
+        <tr>
+            <th>Этикетка</th>
+            <th>Название</th>
+            <th>Метраж</th>
+            <th>Цвет(COLOR-LOT)</th>
+            <th>Сайт магазина</th>
+            <th>Действие</th>
+        </tr>
+        {% for yarn in yarns %}
+            <tr>
+                <td>
+                    <img src="/media/{{ yarn.label }}" class="img-fluid" alt="Фото этикетки">
+                </td>
+                <td>{{ yarn.name }}</td>
+                <td>{{ yarn.weight }}гр -{{ yarn.length }}м</td>
+                <td>{{ yarn.color_lot }}</td>
+                <td>{{ yarn.source }}</td>
+                <td>
+                    <!--|-->
+                    <!--<a class="btn-outline-success" href="/tools/details/{{ tool.id }}" role="button">Посмотреть</a>-->
+                    |
+                    {% if user.username == 'superadmim1' %}
+                        <a class="btn-outline-info" href="/yarns/edit/{{ yarn.id }}" role="button">Изменить</a>
+                        |
+                        <a class="btn-outline-secondary" href="/yarns/delete/{{ yarn.id }}" role="button">Удалить</a>
+                        |
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock content %}

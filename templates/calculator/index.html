@@ -1,0 +1,20 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+
+{% block content %}
+<div class="contanier">
+    <div class="card" id="card_info">
+        <div class="card-header">
+            <h4 class="title">{{ title }}:</h4>
+        </div>
+        <div class="card card-body">
+            <a href="/calculator/rows" class="btn btn-link" role="button">Расчет количества рядов</a>
+            <a href="/calculator/stitches" class="btn btn-link" role="button">Расчет количества петель</a>
+            <a href="/calculator/rapport" class="btn btn-link" role="button">Расчет раппорта</a>
+        </div>
+    </div>
+</div>
+<script></script>
+{% endblock content %}

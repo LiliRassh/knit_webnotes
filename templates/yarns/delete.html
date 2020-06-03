@@ -1,0 +1,26 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+
+{% block content %}
+<div class="container">
+        <div class="card" id="card_info">
+            <div class="card-header">
+                <h4 class="card-title">{{ title }}:</h4>
+            </div>
+            <div class="card card-body">
+                <h5 class="card-text">Название: {{ yarn.name }}</h5>
+                <img src="/media/{{ yarn.label }}" class="card-img" alt="Фото этикетки">
+                <p class="card-text">Метраж: {{yarn.weight}}гр - {{ yarn.length }}м</p>
+                <form action="/yarns/delete/{{ yarn.id }}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Удалить" class="btn btn-secondary" style="width: 200px">
+                </form>
+            </div>
+            <h5 class="card-title">
+                <a class="btn btn-link" href="/yarns" role="button">Вернуться к списку пряжи</a>
+            </h5>
+        </div>
+    </div>
+{% endblock content %}

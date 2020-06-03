@@ -1,0 +1,24 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+
+{% block content %}
+<div class="container">
+    <div class="card mb-3" style="max-width: 760px;">
+        <div class="card-header">
+            {{ title }}
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{pattern.name}}</h5>
+            <img src="/media/{{ pattern.image }}" class="card-img" alt="Фото узора" width="50%">
+            <img src="/media/{{ pattern.scheme }}" class="card-img" alt="Фото схемы узора" width="50%">
+            <p class="card-text"><b>Описание узора: </b>{{ pattern.description }}</p>
+            <p class="card-text"><b>Ссылка: </b>{{ pattern.source }}</p>
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-link" href="/patterns" role="button">Вернуться к коллекции узоров</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -11,9 +11,9 @@
                 <h4>Подтвердите удаление записи:</h4>
             </div>
             <div class="card card-body">
-                <h5>{{ notes.project_name }} / {{ notes.status}} / {{notes.create_date}}</h5>
+                <h5>{{ webnote.project_name }} / {{ webnote.status}} / {{webnote.create_date}}</h5>
 
-                <form action="/webnotes/delete/{{ notes.id }}" method="post">
+                <form action="/webnotes/delete/{{ webnote.id }}" method="post">
                     {% csrf_token %}
                     <input type="submit" value="Удалить" class="btn btn-secondary" style="width: 200px">
                 </form>

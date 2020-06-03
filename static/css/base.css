@@ -58,3 +58,13 @@ div.row{
     border: 1px solid #93a5af;
     box-shadow: 10px 10px 10px #93a5af;
 }
+/*для таблицы в tools/index.html*/
+.table_index{
+    width: 100%;
+    margin: 20px auto;
+}
+
+.table_index th, .table_index td {
+    padding: 5px 10px;
+    text-align: center;
+}

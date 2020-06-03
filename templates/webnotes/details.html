@@ -9,17 +9,17 @@
 
         <div class="card">
             <div class="card-header">
-                {{ notes.craft }}
+                {{ webnote.craft }}
             </div>
             <div class="card-body">
-                <h5 class="card-title">{{notes.project_name}}</h5>
+                <h5 class="card-title">{{webnote.project_name}}</h5>
                 <img src="/media/{{ notes.image }}" width="30%" align="left" style="margin-right: 50px">
-                <p class="card-text"><b>Дата начала:</b> {{ notes.start_date }} - <b>Дата окончания:</b> {{ notes.end_date }}</p>
-                <p class="card-text"><b>Кому:</b> {{ notes.for_who }}</p>
-                <p class="card-text"><b>Примечание:</b> {{ notes.note }}</p>
-                <p class="card-text"><b>Статус:</b> {{ notes.status }}</p>
+                <p class="card-text"><b>Дата начала:</b> {{ webnote.start_date|date:'d-m-Y' }} - <b>Дата окончания:</b> {{ webnote.end_date|date:'d-m-Y' }}</p>
+                <p class="card-text"><b>Кому:</b> {{ webnote.for_who }}</p>
+                <p class="card-text"><b>Примечание:</b> {{ webnote.note }}</p>
+                <p class="card-text"><b>Статус:</b> {{ webnote.status }}</p>
                 <p class="card-text">
-                    <small class="text-muted">Запись добавлена: {{ notes.create_date }}</small>
+                    <small class="text-muted">Запись добавлена: {{ webnote.create_date|date:'d-m-Y h:m:s' }}</small>
                 </p>
                 <a class="btn btn-link" href="/webnotes" role="button">Вернуться к записям в Веб-блокноте</a>
           </div>

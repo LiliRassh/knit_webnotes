@@ -1,0 +1,27 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+
+{% block content %}
+<div class="container">
+        <!--<h1 class="title">{{ title }}</h1>-->
+        <div class="card" id="card_info">
+            <div class="card-header" id="heading_info">
+                <h4>Подтвердите удаление инструмента:</h4>
+            </div>
+            <div class="card card-body">
+
+                <h5>{{ tool.name }}: {{ tool.size}}мм; {{tool.producer}}</h5>
+
+                <form action="/tools/delete/{{ tool.id }}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Удалить" class="btn btn-secondary" style="width: 200px">
+                </form>
+            </div>
+            <h5 class="card-title">
+                <a class="btn btn-link" href="/tools" role="button">Вернуться к списку инструментов</a>
+            </h5>
+        </div>
+    </div>
+{% endblock content %}

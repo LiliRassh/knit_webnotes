@@ -1,0 +1,73 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+
+{% block content %}
+<div class="contanier">
+    <div class="card" id="card_info">
+        <div class="card-header">
+            <h4 class="title">{{ title }}:</h4>
+        </div>
+        <div class="card-body">
+            <form id="stitch" method="post" action="/calculator/stitches">
+                {% csrf_token %}
+                <div class="col">
+                    <h5 class="card-title">Введите замеры образца:</h5>
+                    <div class="form-row">
+                        <label for="num1">В
+                            <input type="number" id="num1">
+                        </label>
+                        <label for="stitch1">
+                            см
+                            <input type="number" id="stitch1">
+                            петель
+                        </label>
+                    </div>
+                    <div class="form-row">
+                        <p>В 1см будет
+                            <span id="res1" style="border: 1px solid black">ХХ</span>
+                            петель
+                        </p>
+                    </div>
+                    <hr>
+                    <div class="form-row">
+                        <label for="num2">В
+                            <input type="number" id="num2">
+                            см будет
+                            <span id="res2" style="border: 1px solid black"> ХХ </span>
+                            петель
+                        </label>
+                    </div>
+                    <p style="margin-top: 20px">
+                        <input id="calc" type="button" value="Расчитать" class="btn btn-info">
+                        <input id="cancel" type="reset" value="Очистить" class="btn btn-secondary">
+                    </p>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer">
+            <a href="/calculator" class="btn btn-link" role="button">Вернуться к калькулятору</a>
+        </div>
+    </div>
+</div>
+<script>
+        $(document).ready(()=>{
+            $('#stitch1').blur(()=>{
+                let num = $('#num1').val();
+                let stitch = $('#stitch1').val();
+                let res = stitch/num;
+                $('#res1').html(res);
+            });
+            $('#calc').click(()=>{
+                    let num2 = $('#num2').val();
+                    let res1 = $('#res1').text();
+                    let res2 = num2*res1;
+                    $('#res2').html(res2);
+                });
+            $('#cancel').click(()=>{
+                    $('#res1').html("xx");
+                });
+        });
+    </script>
+{% endblock content %}

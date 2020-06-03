@@ -1,0 +1,41 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+
+{% block content %}
+<div class="container">
+    <div class="card" id="card_info">
+        <div class="card-header" id="heading_info">
+            <h4 class="card-title">{{ title }}</h4>
+        </div>
+        <div class="card card-body">
+            <form method="post" action="/patterns/create" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in form_pattern %}
+                    <div class="form-group">
+                        {{ field.label }}
+                        <div>{{ field }}</div>
+                    </div>
+                {% endfor %}
+                <p style="margin-top: 20px">
+                    <input id="save" type="submit" value="Отправить" class="btn btn-success">
+                    <input id="cancel" type="reset" value="Очистить" class="btn btn-secondary">
+                </p>
+            </form>
+        </div>
+        <h5 class="card-title">
+            <a class="btn btn-link" href="/patterns" role="button">Вернуться к коллекции узоров</a>
+        </h5>
+    </div>
+</div>
+<style>
+    .form-group input{
+        width: 50%;
+        height: 30px;
+    }
+    .form-group textarea {
+        width: 50%;
+    }
+</style>
+{% endblock content %}
