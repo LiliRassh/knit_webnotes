@@ -8,7 +8,7 @@ from django.core.paginator import Paginator
 def index(request):
     data = dict()
     # data['user'] = 'temp_admin'         # Временный пользователь (до вкл.авторизации)
-    data['title'] = 'Твой Веб-блокнот'
+    data['title'] = 'Мой Веб-блокнот'
     all_webnotes = Webnote.objects.all()
     data['notes'] = all_webnotes
 

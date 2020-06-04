@@ -4,42 +4,67 @@
 
 
 {% block content %}
-<div class="container">
-    <div>
-        <h1 class="title">{{ title }}</h1>
-    </div>
-    {% if user.username == 'superadmim1' %}
-        <a href="/webnotes/create" id="btn_add_notes" class="btn btn-info" role="button">Добавить запись</a>
-    {% endif %}
-    {% for note in page_obj  %}
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row no-gutters">
-                <div class="col-md-4">
-                    <img src="/media/{{ note.image }}" class="card-img" alt="Фото изделия">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ note.project_name }}</h5>
-                        <p class="card-text">
-                            Кому: {{ note.for_who }}<br>Статус: {{ note.status }}, {{ note.private_status }}
-                        </p>
-                        <p class="card-text">
-                            {{ note.note }}<br>
-                            <small class="text-muted">{{ note.craft }}</small>
-                        </p>
+<div class="container" style="margin: 0px 50px">
+    <div class="row" style="margin: 10px 0px">
+        <div class="col-md-2" style="border-right: solid 1px #b9d3c6">
+        <h5 class="title">{{ title }}</h5>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/webnotes">Веб-блокнот</a>
+                    <ul>
+                        <li><a class="link" href="/webnotes">Все проекти</a></li>
+                        <li><a class="link" href="#">Публичные</a></li>
+                        <li><a class="link" href="#">Приватные</a></li>
+                        <li><a class="link" href="#">Завершенные</a></li>
+                        <li><a class="link" href="#">В процессе</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link" href="/patterns">Узоры</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/tools">Инструменты</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/yarns">Пряжа</a>
+                </li>
+
+            </ul>
+      </div>
+        <div class="col-md-8">
+            <h2>Heading</h2>
+            {% if user.username == 'superadmim1' %}
+                <a href="/webnotes/create" id="btn_add_notes" class="btn btn-info" role="button">Добавить запись</a>
+            {% endif %}
+            {% for note in page_obj  %}
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="/media/{{ note.image }}" class="card-img" alt="Фото изделия">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ note.project_name }}</h5>
+                                <p class="card-text">
+                                    Кому: {{ note.for_who }}<br>Статус: {{ note.status }}, {{ note.private_status }}
+                                </p>
+                                <p class="card-text">
+                                    {{ note.note }}<br>
+                                    <small class="text-muted">{{ note.craft }}</small>
+                                </p>
+                            </div>
+                            <p>
+                                <a class="btn-outline-success" href="/webnotes/details/{{ note.id }}" role="button">Посмотреть</a>
+                                {% if user.username == 'superadmim1' %}
+                                    <a class="btn-outline-info" href="/webnotes/edit/{{ note.id }}" role="button">Изменить</a>
+                                    <a class="btn-outline-secondary" href="/webnotes/delete/{{ note.id }}" role="button">Удалить</a>
+                                {% endif %}
+                            </p>
+                        </div>
                     </div>
-                    <p>
-                        <a class="btn-outline-success" href="/webnotes/details/{{ note.id }}" role="button">Посмотреть</a>
-                        {% if user.username == 'superadmim1' %}
-                            <a class="btn-outline-info" href="/webnotes/edit/{{ note.id }}" role="button">Изменить</a>
-                            <a class="btn-outline-secondary" href="/webnotes/delete/{{ note.id }}" role="button">Удалить</a>
-                        {% endif %}
-                    </p>
                 </div>
-            </div>
-        </div>
-    {% endfor %}
-    <div class="pagination" style="margin-top: 20px">
+            {% endfor %}
+            <div class="pagination" style="margin-top: 20px">
         <nav aria-label="Page navigation example">
             <ul class="pagination">
                 <!--Переход назад на предыдущую страницу-->
@@ -71,6 +96,9 @@
             </ul>
         </nav>
     </div>
+        </div>
+    </div>
+
 </div>
 <style>
     #btn_add_notes {

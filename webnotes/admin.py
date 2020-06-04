@@ -31,4 +31,3 @@ class YarnAdmin(admin.ModelAdmin):
 class YarnAdmin(admin.ModelAdmin):
     list_display = ('id', 'project_name', 'create_date', 'for_who', 'craft', 'private_status',
                     'status')
-

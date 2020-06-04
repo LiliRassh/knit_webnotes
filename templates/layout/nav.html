@@ -7,14 +7,20 @@
         </button>
         <div class="collapse navbar-collapse" id="navbars">
             <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Главная <span class="sr-only">(current)</span></a>
+                </li>
                 <li class="nav-item">
-                <a class="nav-link" href="/">Главная <span class="sr-only">(current)</span></a>
-              </li>
-                <li class="nav-item">
-                <a class="nav-link" href="/home/about">О сайте</a>
-              </li>
+                    <a class="nav-link" href="/home/about">О сайте</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/home/contacts">Контакты</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/calculator">Калькулятор</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/patterns">Узоры</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/webnotes">Веб-блокнот</a>
@@ -24,7 +30,6 @@
             </ul>
             <ul class="navbar-nav navbar-right">
                 <li class="nav-item dropdown">
-
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Здравствуйте,
                         {% if user.is_authenticated %}
@@ -43,39 +48,13 @@
                             <a class="dropdown-item" href="/patterns">Узоры</a>
                             <a class="dropdown-item" href="/tools">Инструменты</a>
                             <a class="dropdown-item" href="/yarns">Пряжа</a>
-                            <a class="dropdown-item" href="/samples">Образцы</a>
-                            <a class="dropdown-item" href="/calculator">Калькулятор</a>
+                            <!--<a class="dropdown-item" href="/samples">Образцы</a>-->
                             <hr>
                             <a class="dropdown-item" href="/accounts/sign_out">Выйти</a>
 
                         {% endif %}
                     </div>
                 </li>
-                <!--<li class="nav-item">-->
-                    <!--<a class="nav-link" href="" style="margin-right: 20px">-->
-                        <!--Привет,-->
-                        <!--{% if user.is_authenticated %}-->
-                        <!--{{ user.username }}!-->
-                        <!--{% else %}-->
-                            <!--Гость!-->
-                        <!--{% endif %}-->
-                    <!--</a>-->
-                <!--</li>-->
-                <!--{% if not user.is_authenticated %}-->
-                    <!--<li class="nav-item">-->
-                        <!--<a class="nav-link" href="/accounts/sign_up">Регистрация</a>-->
-                    <!--</li>-->
-                    <!--<li class="nav-item">-->
-                        <!--<a class="nav-link" href="/accounts/sign_in">Вход</a>-->
-                    <!--</li>-->
-                <!--{% else %}-->
-                    <!--<li class="nav-item">-->
-                        <!--<a class="nav-link" href="/accounts/profile">Профиль</a>-->
-                    <!--</li>-->
-                    <!--<li class="nav-item">-->
-                        <!--<a class="nav-link" href="/accounts/sign_out">Выход</a>-->
-                    <!--</li>-->
-                <!--{% endif %}-->
             </ul>
         </div>
     </div>

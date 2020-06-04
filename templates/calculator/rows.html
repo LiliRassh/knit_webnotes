@@ -13,31 +13,37 @@
             <form id="row" method="post" action="/calculator/rows">
                 {% csrf_token %}
                 <div class="col">
-                    <h5 class="card-title">Введите замеры образца:</h5>
-                    <div class="form-row">
-                        <label for="num1">В
-                            <input type="number" id="num1">
-                        </label>
-                        <label for="row1">
-                            см
-                            <input type="number" id="row1">
-                            рядов
-                        </label>
+                    <h5 class="card-title">Введите плотность вязания:</h5>
+                    <div class="form-group row" style="margin: 10px 0px">
+                        <div class="col-auto">
+                            <input type="number" class="form-control" id="num1">
+                        </div>
+                        <label for="num1" class="col-sm-4 col-form-label">см</label>
                     </div>
-                    <div class="form-row">
-                        <p>В 1см будет
-                            <span id="res1" style="border: 1px solid black"> xx </span>
+                    <div class="form-group row" style="margin: 10px 0px">
+                        <div class="col-auto">
+                            <input type="number" class="form-control" id="row1">
+                        </div>
+                        <label for="row1" class="col-sm-4 col-form-label">рядов</label>
+                    </div>
+                    <div class="form-group row" style="margin: 10px 0px">
+                        <h5>В 1см будет
+                            <span id="res1" class="badge badge-info"> xx </span>
                             ряда
-                        </p>
+                        </h5>
                     </div>
                     <hr>
-                    <div class="form-row">
-                        <label for="num2">В
-                            <input type="number" id="num2">
-                            см будет
-                            <span id="res2" style="border: 1px solid black"> xx </span>
-                            рядов
-                        </label>
+                    <h5 class="card-title">Введите высоту изделия:</h5>
+                    <div class="form-group row" style="margin: 10px 0px">
+                        <div class="col-auto">
+                            <input type="number" class="form-control" id="num2">
+                        </div>
+                        <label for="num2" class="col-sm-4 col-form-label">см</label>
+                    </div>
+                    <div class="from-group row" style="margin: 10px 0px">
+                        <h5>Нужно провязать
+                            <span id="res2" class="badge badge-info"> xx </span> рядов
+                        </h5>
                     </div>
                     <p style="margin-top: 20px">
                         <input id="calc" type="button" value="Расчитать" class="btn btn-info">
