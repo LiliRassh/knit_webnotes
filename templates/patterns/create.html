@@ -13,19 +13,25 @@
             <form method="post" action="/patterns/create" enctype="multipart/form-data">
                 {% csrf_token %}
                 {% for field in form_pattern %}
-                    <div class="form-group">
-                        {{ field.label }}
-                        <div>{{ field }}</div>
-                    </div>
+                    {% if field.label == 'User' %}
+                        <div class="form-group">
+                            <input type="hidden" name="user" value="{{ user.id }}">
+                        </div>
+                    {% else %}
+                        <div class="form-group">
+                            {{ field.label }}
+                            <div>{{ field }}</div>
+                        </div>
+                    {% endif %}
                 {% endfor %}
                 <p style="margin-top: 20px">
-                    <input id="save" type="submit" value="Отправить" class="btn btn-success">
+                    <input id="save" type="submit" value="Сохранить" class="btn btn-success">
                     <input id="cancel" type="reset" value="Очистить" class="btn btn-secondary">
                 </p>
             </form>
         </div>
         <h5 class="card-title">
-            <a class="btn btn-link" href="/patterns" role="button">Вернуться к коллекции узоров</a>
+            <a class="btn btn-link" href="/patterns/{{ user.id }}" role="button">Вернуться к коллекции узоров</a>
         </h5>
     </div>
 </div>

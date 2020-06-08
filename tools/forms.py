@@ -11,7 +11,7 @@ class ToolForm(forms.ModelForm):
 
     class Meta:
         model = Tool
-        fields = ('name', 'size', 'producer', 'type', 'material')
+        fields = ('name', 'size', 'producer', 'type', 'material', 'user')
 
 
 class ToolForm2(forms.ModelForm):

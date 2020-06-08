@@ -1,17 +1,22 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.models import User
 from .models import Webnote
 from .forms import WebnoteForm, WebnoteForm2
 from django.contrib.auth import logout
 from django.core.paginator import Paginator
 
 
-def index(request):
+def index(request, user_id):
     data = dict()
-    # data['user'] = 'temp_admin'         # Временный пользователь (до вкл.авторизации)
     data['title'] = 'Мой Веб-блокнот'
-    all_webnotes = Webnote.objects.all()
-    data['notes'] = all_webnotes
-
+    user = get_object_or_404(User, id=user_id)
+    data['user'] = user
+    if request.user.is_authenticated:
+        all_webnotes = Webnote.objects.filter(user=user_id)
+        data['webnotes'] = all_webnotes
+    else:
+        logout(request)
+        return redirect('/accounts/sign_up')
     paginator = Paginator(all_webnotes, 2)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -26,7 +31,7 @@ def create(request):
     if request.method == 'GET':
         # Блокировка доступа через адресную строку
         # superadmim1 : 777sssL
-        if request.user.username == 'superadmim1':
+        if request.user.is_authenticated:
             data['form_webnote'] = WebnoteForm()
             return render(request, 'webnotes/create.html', context=data)
         else:
@@ -34,16 +39,22 @@ def create(request):
             return redirect('/accounts/sign_up')
     elif request.method == 'POST':
         filled_form = WebnoteForm(request.POST, request.FILES)
+        print(filled_form.data)
         filled_form.save()
-        # перенаправляем на страничку webnotes, а там запись добовляется в список со всеми записями
-        return redirect('/webnotes')
+        # перенаправляем на страничку webnotes
+        return redirect(f'/webnotes/{request.user.id}')
 
 
 def details(request, webnote_id):
     data = dict()
     data['title'] = 'Просмотр записи о проекте'
-    data['webnote'] = Webnote.objects.get(id=webnote_id)                  # получаем id нужной новости
-    return render(request, 'webnotes/details.html', context=data)
+    if request.method == 'GET':
+        if request.user.is_authenticated:
+            data['webnote'] = Webnote.objects.get(id=webnote_id)
+            return render(request, 'webnotes/details.html', context=data)
+        else:
+            logout(request)
+            return redirect('/accounts/sign_up')
 
 
 def edit(request, webnote_id):
@@ -51,8 +62,7 @@ def edit(request, webnote_id):
     data['title'] = 'Редактирование записи в Веб-блокноте'
     webnote = Webnote.objects.get(id=webnote_id)
     if request.method == 'GET':
-
-        if request.user.username == 'superadmim1':
+        if request.user.is_authenticated:
             data['form'] = WebnoteForm2(instance=webnote)
             data['webnote'] = webnote
             return render(request, 'webnotes/edit.html', context=data)
@@ -68,10 +78,10 @@ def edit(request, webnote_id):
             webnote.for_who = form2.cleaned_data['for_who']
             webnote.craft = form2.cleaned_data['craft']
             webnote.note = form2.cleaned_data['note']
-            webnote.private_status = form2.cleaned_data['private_status']
+            webnote.access = form2.cleaned_data['access']
             webnote.status = form2.cleaned_data['status']
             webnote.save()
-        return redirect('/webnotes')
+        return redirect(f'/webnotes/{request.user.id}')
 
 
 def delete(request, webnote_id):
@@ -80,7 +90,7 @@ def delete(request, webnote_id):
     webnote = Webnote.objects.get(id=webnote_id)
     if request.method == 'GET':
         # Блокировка доступа через адресную строку
-        if request.user.username == 'superadmim1':
+        if request.user.is_authenticated:
             data['webnote'] = webnote
             return render(request, 'webnotes/delete.html', context=data)
         else:
@@ -88,4 +98,4 @@ def delete(request, webnote_id):
             return redirect('/accounts/sign_up')
     elif request.method == 'POST':
         webnote.delete()
-        return redirect('/webnotes')
+        return redirect(f'/webnotes/{request.user.id}')

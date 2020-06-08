@@ -1,16 +1,22 @@
-from django.shortcuts import render, redirect
-from webnotes.models import Pattern
-from .forms import PatternForm, PatternForm2
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from django.core.paginator import Paginator
+from webnotes.models import Pattern
+from .forms import PatternForm, PatternForm2
 
 
-def index(request):
+def index(request, user_id):
     data = dict()
     data['title'] = 'Коллекция узоров'
-    all_patterns = Pattern.objects.all()
-    data['patterns'] = all_patterns
-
+    user = get_object_or_404(User, id=user_id)
+    data['user'] = user
+    if request.user.is_authenticated:
+        all_patterns = Pattern.objects.filter(user=user_id)
+        data['patterns'] = all_patterns
+    else:
+        logout(request)
+        return redirect('/accounts/sign_up')
     paginator = Paginator(all_patterns, 2)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -25,7 +31,7 @@ def create(request):
     if request.method == 'GET':
         # Блокировка доступа через адресную строку
         # superadmim1 : 777sssL
-        if request.user.username == 'superadmim1':
+        if request.user.is_authenticated:
             data['form_pattern'] = PatternForm()
             return render(request, 'patterns/create.html', context=data)
         else:
@@ -36,14 +42,19 @@ def create(request):
         filled_form = PatternForm(request.POST, request.FILES)
         filled_form.save()
         # перенаправляем на страничку patterns/index.html, а там запись добовляется в список со всеми записями
-        return redirect('/patterns')
+        return redirect(f'/patterns/{request.user.id}')
 
 
 def details(request, pattern_id):
     data = dict()
     data['title'] = 'Информация об узоре'
-    data['pattern'] = Pattern.objects.get(id=pattern_id)
-    return render(request, 'patterns/details.html', context=data)
+    if request.method == 'GET':
+        if request.user.is_authenticated:
+            data['pattern'] = Pattern.objects.get(id=pattern_id)
+            return render(request, 'patterns/details.html', context=data)
+        else:
+            logout(request)
+            return redirect('/accounts/sign_up')
 
 
 def edit(request, pattern_id):
@@ -51,7 +62,7 @@ def edit(request, pattern_id):
     data['title'] = 'Изменить информацию об узоре'
     pattern = Pattern.objects.get(id=pattern_id)
     if request.method == 'GET':
-        if request.user.username == 'superadmim1':
+        if request.user.is_authenticated:
             data['form'] = PatternForm2(instance=pattern)
             data['pattern'] = pattern
             return render(request, 'patterns/edit.html', context=data)
@@ -67,7 +78,7 @@ def edit(request, pattern_id):
             pattern.description = form2.cleaned_data['description']
             pattern.source = form2.cleaned_data['source']
             pattern.save()
-        return redirect('/patterns')
+        return redirect(f'/patterns/{request.user.id}')
 
 
 def delete(request, pattern_id):
@@ -76,7 +87,7 @@ def delete(request, pattern_id):
     pattern = Pattern.objects.get(id=pattern_id)
     if request.method == 'GET':
         # Блокировка доступа через адресную строку
-        if request.user.username == 'superadmim1':
+        if request.user.is_authenticated:
             data['pattern'] = pattern
             return render(request, 'patterns/delete.html', context=data)
         else:
@@ -84,4 +95,4 @@ def delete(request, pattern_id):
             return redirect('/accounts/sign_up')
     elif request.method == 'POST':
         pattern.delete()
-        return redirect('/patterns')
+        return redirect(f'/patterns/{request.user.id}')

@@ -6,7 +6,7 @@
 {% block content %}
     {% load static %}
     <div class="container">
-        <div class="form_style">
+        <div class="form_style" style="margin: 190px 150px;">
             <h1 class="title">{{ title }}</h1>
             <form id="form2" action="/accounts/sign_in" method="post">
             {% csrf_token %}
@@ -27,6 +27,11 @@
         </div>
     </div>
 <style>
+    main{
+        height: 790px;
+        background-image: url("../../static/img/style/St4_Big_7_1.jpg");
+        background-size: cover;
+    }
     .inp {
         width: 300px;
     }

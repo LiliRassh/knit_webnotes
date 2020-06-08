@@ -11,7 +11,7 @@ class PatternForm(forms.ModelForm):
 
     class Meta:
         model = Pattern
-        fields = ('name', 'image', 'scheme', 'description', 'source')
+        fields = ('name', 'image', 'scheme', 'description', 'source', 'user')
 
 
 class PatternForm2(forms.ModelForm):

@@ -12,7 +12,7 @@ class YarnForm(forms.ModelForm):
 
     class Meta:
         model = Yarn
-        fields = ('name', 'color_lot', 'weight', 'length', 'label', 'source')
+        fields = ('name', 'color_lot', 'weight', 'length', 'label', 'source', 'user')
 
 
 class YarnForm2(forms.ModelForm):

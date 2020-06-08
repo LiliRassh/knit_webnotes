@@ -5,14 +5,17 @@
 
 {% block content %}
 <div class="container">
+    <h1 class="title" style="margin: 50px;">{{ title }}</h1>
     <div class="row" style="margin: 10px 0px">
         <div class="col-md-2" style="border-right: solid 1px #b9d3c6">
-        <h5 class="title">{{ title }}</h5>
+            {% if user.is_authenticated %}
+                <a href="/patterns/create" id="btn_add_notes" class="btn btn-info" role="button">Добавить узор</a>
+            {% endif %}
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/webnotes">Веб-блокнот</a>
+                    <a class="nav-link" href="/webnotes/{{ user.id }}">Веб-блокнот</a>
                     <ul>
-                        <li><a class="link" href="/webnotes">Все проекти</a></li>
+                        <li><a class="link" href="/webnotes/{{ user.id }}">Все проекти</a></li>
                         <li><a class="link" href="#">Публичные</a></li>
                         <li><a class="link" href="#">Приватные</a></li>
                         <li><a class="link" href="#">Завершенные</a></li>
@@ -20,21 +23,18 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                        <a class="nav-link" href="/patterns">Узоры</a>
+                        <a class="nav-link" href="/patterns/{{ user.id }}">Узоры</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/tools">Инструменты</a>
+                    <a class="nav-link" href="/tools/{{ user.id }}">Инструменты</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/yarns">Пряжа</a>
+                    <a class="nav-link" href="/yarns/{{ user.id }}">Пряжа</a>
                 </li>
 
             </ul>
-      </div>
+        </div>
         <div class="col-md-8">
-            {% if user.username == 'superadmim1' %}
-                <a href="/patterns/create" id="btn_add_notes" class="btn btn-info" role="button">Добавить узор</a>
-            {% endif %}
             {% for pattern in page_obj  %}
                 <div class="card mb-3" style="max-width: 540px;">
                     <div class="card-title">
@@ -56,7 +56,7 @@
                             <p class="card-text">Ссылка: {{ pattern.source }}</p>
                             <p>
                                 <a class="btn-outline-success" href="/patterns/details/{{ pattern.id }}" role="button">Посмотреть</a>
-                                {% if user.username == 'superadmim1' %}
+                                {% if user.is_authenticated %}
                                     <a class="btn-outline-info" href="/patterns/edit/{{ pattern.id }}" role="button">Изменить</a>
                                     <a class="btn-outline-secondary" href="/patterns/delete/{{ pattern.id }}" role="button">Удалить</a>
                                 {% endif %}
@@ -101,6 +101,11 @@
     </div>
 </div>
 <style>
+    main{
+        height: 100%;
+        background-image: url("../../static/img/style/St4_Big_12_1.jpg");
+        background-size: cover;
+    }
     #btn_add_notes {
         margin-bottom: 20px;
     }
