@@ -1,0 +1,47 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+
+{% block content %}
+<div class="container">
+    <div class="card" id="card_info">
+        <div class="card-header">
+            <h4 class="card-title">{{ title }}</h4>
+        </div>
+        <div class="card card-body">
+            <form method="post" action="/yarns/create" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in form_yarn %}
+                    {% if field.label == 'User' %}
+                        <div class="form-group">
+                            <input type="hidden" name="user" value="{{ user.id }}">
+                        </div>
+                    {% else %}
+                        <div class="form-group">
+                            {{ field.label }}
+                            <div>{{ field }}</div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                <p style="margin-top: 20px">
+                    <input id="save" type="submit" value="Сохранить" class="btn btn-success">
+                    <input id="cancel" type="reset" value="Очистить" class="btn btn-secondary">
+                </p>
+            </form>
+        </div>
+        <h5 class="card-title">
+            <a class="btn btn-link" href="/yarns/{{ user.id }}" role="button">Вернуться к списку пряжи</a>
+        </h5>
+    </div>
+</div>
+<style>
+    .form-group input{
+        width: 50%;
+        height: 30px;
+    }
+    .form-group textarea {
+        width: 50%;
+    }
+</style>
+{% endblock content %}

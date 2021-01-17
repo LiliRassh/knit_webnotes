@@ -1,0 +1,88 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+
+{% block content %}
+<div class="contanier">
+    <div class="card" id="card_info" style="width: 90%; margin: 20px auto;">
+        <div class="card-header">
+            <h4 class="title">{{ title }}:</h4>
+        </div>
+        <div class="card-body">
+            <form id="rapport" method="post" action="/calculator/rapport">
+                {% csrf_token %}
+
+                <div class="form-group row" style="margin: 10px 0px">
+                    <label for="num1" class="col-sm-6 col-form-label">Введите количество петель в раппорте:</label>
+                    <div class="col-sm-4">
+                        <input type="number" class="form-control" id="num1">
+                    </div>
+                </div>
+                <div class="form-group row" style="margin: 10px 0px">
+                    <label for="num2" class="col-sm-6 col-form-label">Введите количество петель изделия:</label>
+                    <div class="col-sm-4">
+                        <input type="number" class="form-control" id="num2">
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <!--<div class="alert alert-info" role="alert">Для адаптации узора под плотность вязания, можно добавить или удалить петельки:</div>-->
+                    <div class="card-title">
+                        <h5 >
+                        Для адаптации узора под плотность вязания, можно добавить или удалить петельки:
+                        </h5>
+                    </div>
+                    <h6>Целое число рапортов
+                        <span id="res_rapp" class="badge badge-info"> xx </span>
+                        <!--<span id="res_stitch" class="badge badge-info"> xx </span>-->
+
+                    </h6>
+
+                    <h6>
+                        Добавить -
+                        <span id="res_up" class="badge badge-info">xx</span>
+                    </h6>
+                    <h6>
+                        Убавить -
+                        <span id="res_down" class="badge badge-info">xx</span>
+                    </h6>
+                    <p style="margin-top: 20px">
+                    <input id="calc" type="button" value="Расчитать" class="btn btn-info">
+                    <input id="cancel" type="reset" value="Очистить" class="btn btn-secondary">
+                </p>
+                </div>
+
+
+            </form>
+        </div>
+        <div class="card-footer">
+            <a href="/calculator" class="btn btn-link" role="button">Вернуться к калькулятору</a>
+        </div>
+    </div>
+</div>
+<script>
+        $(document).ready(()=>{
+
+            $('#calc').click(()=>{
+                let num1 = $('#num1').val();
+                let num2 = $('#num2').val();
+
+                let res_rapp = Math.trunc(num2/num1);
+                let res_stitch = res_rapp*num1;
+                let res_up = num1 - num2%num1;
+                let res_down = num2%num1;
+
+                $('#res_rapp').html(res_rapp+' = '+res_stitch+' п.');
+                $('#res_up').html(res_up+' п. = '+(res_rapp+1)*num1+' п.');
+                $('#res_down').html(res_down+' п. = '+res_stitch+' п.');
+                });
+
+            $('#cancel').click(()=>{
+                $('#res_rapp').html('xx');
+                $('#res_up').html('xx');
+                $('#res_down').html('xx');
+                });
+        });
+    </script>
+{% endblock content %}

@@ -1,0 +1,25 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="card" id="card_info">
+            <div class="card-header">
+                <h4 class="card-title">{{ title }}:</h4>
+            </div>
+            <div class="card card-body">
+                <h5 class="card-text">Название узора: {{ pattern.name }}</h5>
+                <h5 class="card-text">{{pattern.source}}</h5>
+                <form action="/patterns/delete/{{ pattern.id }}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Удалить" class="btn btn-secondary" style="width: 200px">
+                </form>
+            </div>
+            <h5 class="card-title">
+                <a class="btn btn-link" href="/patterns/{{ user.id }}" role="button">Вернуться к коллекции узоров</a>
+            </h5>
+        </div>
+    </div>
+{% endblock content %}

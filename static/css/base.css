@@ -19,42 +19,68 @@ body {
     }
    }
 
-#index_bg h1{
-    color: #7FFF00;
-    font-weight: bold;
-}
-
-img {
-    width: 250px;
-    size: cover;
-}
-
-#content, #index_bg {
-    margin-top: 20px;
-    margin-left: 50px;
-    }
-
+/*Загаловок у страницы  #6e675f */
 .title{
-    color: #c5648f;
+    text-align: center;
+    color: #0086ad;
     font-weight: bold;
-    text-shadow:2px 2px 4px #6c757d;
+    font-style: oblique;
+    text-shadow:0 0 10px #e5f0f1;
+    text-transform: capitalize;
+    text-decoration: underline;
 }
 
-/*footer*/
-#foot {
-    text-align: right;
+#first{
+    width: 60%;
+    margin: 75px auto;
+    padding: 15px;
+    text-align: left;
+    border-left: 5px solid #89abb0;
+    font-style: italic;
 }
+
 div.row{
     margin: 10px 50px;
 }
-/* img-fluid маштабирует изображение под родительский элемент*/
-/*c5648f  cyan - 47b5b6  светло-берюзовый #b9d3c6  #ffe5d4 #bbee89 - светло-салатовый*/
-/* For form center*/
-.form_style{
-    width: 50%;
+
+
+/*для таблицы в tools/index.html*/
+.table_index{
+    background-color: white;
+    width: 100%;
     margin: 20px auto;
-    border-radius: .25rem;
-    padding: 20px;
-    border: 1px solid #93a5af;
-    box-shadow: 10px 10px 10px #93a5af;
+}
+
+.table_index th, .table_index td {
+    padding: 5px 10px;
+    text-align: center;
+}
+
+/* img-fluid маштабирует изображение под родительский элемент*/
+.img-round {
+    border-radius: 50%;
+}
+
+/*Navbar*/
+#nav-color{
+    padding-top: 1.3rem;
+    padding-bottom: 1.3rem;
+    -moz-box-shadow:    1px 1px 2px 5px #89abb0;
+    -webkit-box-shadow: 1px 1px 2px 5px #89abb0;
+    box-shadow:         1px 1px 2px 5px #89abb0;
+    }
+
+/*li.nav-item:active{
+    border-bottom: 1px solid #81B8BD;
+    border-radius: 50%
+}*/
+
+.line-divider{
+    border: 1px solid #89abb0;
+    box-shadow: 1px 1px 2px 2px #89abb0;
+}
+
+/* фон для div.card в calculator */
+#calc-bg-color{
+    background-color: rgba(255, 255, 255, 0.6);
 }

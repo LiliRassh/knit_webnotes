@@ -15,20 +15,50 @@
         <div class="card card-body">
             <form method="post" action="/webnotes/create" enctype="multipart/form-data">
                 {% csrf_token %}
-                {% for field in form_notes %}
-                    <div class="form-group">
-                        {{ field.label }}
-                        <div>{{ field }}</div>
-                    </div>
+                {% for field in form_webnote %}
+                    {% if field.label == 'User' %}
+                        <div class="form-group">
+                            <input type="hidden" name="user" value="{{ user.id }}">
+                        </div>
+                    {% else %}
+                        <div class="form-group">
+                            {{ field.label }}
+                            <div>{{ field }}</div>
+                        </div>
+                    {% endif %}
                 {% endfor %}
+                <div class="form-group">
+                    <label for="id_pattern">Узор</label><br>
+                        <select name="pattern" id="id_pattern" size="3">
+                            {% for pattern in form_pattern %}
+                                <option value="{{ pattern.id }}">{{ pattern }}</option>
+                            {% endfor %}
+                        </select>
+                </div>
+                <div class="form-group">
+                    <label for="id_tool">Инструменты</label><br>
+                        <select name="tool" id="id_tool" size="3">
+                            {% for tool in form_tool %}
+                                <option value="{{ tool.id }}">{{ tool }}</option>
+                            {% endfor %}
+                        </select>
+                </div>
+                <div class="form-group">
+                    <label for="id_yarn">Пряжа</label><br>
+                        <select name="yarn" id="id_yarn" size="3">
+                            {% for yarn in form_yarn %}
+                                <option value="{{ yarn.id }}">{{ yarn }}</option>
+                            {% endfor %}
+                        </select>
+                </div>
                 <p style="margin-top: 20px">
-                    <input id="save" type="submit" value="Отправить" class="btn btn-success">
+                    <input id="save" type="submit" value="Сохранить" class="btn btn-success">
                     <input id="cancel" type="reset" value="Очистить" class="btn btn-secondary">
                 </p>
             </form>
         </div>
         <h5 class="card-title">
-            <a class="btn btn-link" href="/webnotes" role="button">Вернуться к записям в Веб-блокноте</a>
+            <a class="btn btn-link" href="/webnotes/{{ user.id }}" role="button">Вернуться к записям в Веб-блокноте</a>
         </h5>
     </div>
 </div>

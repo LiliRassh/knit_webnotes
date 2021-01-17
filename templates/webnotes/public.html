@@ -1,0 +1,75 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+
+{% block content %}
+<div class="container" style="margin: 0px 50px">
+    <h1 class="title" style="margin: 50px;">{{ title }}</h1>
+    <div class="row" style="margin: 10px 0px">
+        {% for webnote in page_obj %}
+            <div class="col-md-4">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row no-gutters">
+                        <h5 class="card-title">{{ webnote.user }}</h5>
+                        <img src="/media/{{ webnote.image }}" class="card-img" alt="Фото изделия">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ webnote.project_name }}</h5>
+                            <p class="card-text">Статус: {{ webnote.status }}</p>
+                            <p class="card-text">{{ webnote.note }}<br>
+                                <small class="text-muted">{{ webnote.craft }}</small>
+                            </p>
+                            <!--<p class="card-text">Узор: {{ webnote.pattern }}</p>-->
+                            <!--<p class="card-text">Пряжа: {{ webnote.yarn }}</p>-->
+                            <!--<p class="card-text">Инструменты: {{ webnote.tool }}</p>-->
+                        </div>
+                        <p>
+                            <a class="btn-outline-success" href="/webnotes/details/{{ webnote.id }}" role="button">Посмотреть</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+    <div class="pagination" style="margin-top: 20px">
+                <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <!--Переход назад на предыдущую страницу-->
+                {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page=1">1</a>
+                </li>
+                {% endif %}
+                <!--Номер текущей страницы-->
+                <li class="page-item active">
+                    <a class="page-link" href="?page={{ page_obj.number }}">{{ page_obj.number }}</a>
+                </li>
+                <!--Переход вперед на следующую страницу-->
+                {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+            </div>
+</div>
+<style>
+    main{
+        height: 100%;
+        background-image: url("../../static/img/style/St4_Big_12_1.jpg");
+        background-size: cover;
+    }
+</style>
+{% endblock content %}

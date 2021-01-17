@@ -24,7 +24,12 @@ urlpatterns = [
     path('', include('home.urls')),
     path('home/', include('home.urls')),
     path('accounts/', include('accounts.urls')),
-    path('webnotes/', include('webnotes.urls'))
+    path('calculator/', include('calculator.urls')),
+    path('patterns/', include('patterns.urls')),
+    path('samples/', include('samples.urls')),
+    path('tools/', include('tools.urls')),
+    path('webnotes/', include('webnotes.urls')),
+    path('yarns/', include('yarns.urls')),
 ]
 
 if settings.DEBUG:

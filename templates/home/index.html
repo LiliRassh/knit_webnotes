@@ -5,50 +5,6 @@
 
 {% block content %}
     {% load static %}
-    <!-- start: Slider -->
-	<!--<div class="slider-wrapper">-->
-
-		<!--<div id="da-slider" class="da-slider">-->
-			<!--<div class="da-slide">-->
-				<!--<h2>Knitting Project Book</h2>-->
-				<!--<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>-->
-				<!--<a href="#" class="da-link">Read more</a>-->
-				<!--<div class="da-img">-->
-                    <!--<img src="{% static 'img/knit_logo/knit_logo5.png' %}" alt="image01" />-->
-                <!--</div>-->
-			<!--</div>-->
-			<!--<div class="da-slide">-->
-				<!--<h2>Вяжи))</h2>-->
-				<!--<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>-->
-				<!--<a href="#" class="da-link">Read more</a>-->
-				<!--<div class="da-img">-->
-                    <!--<img src="{% static 'img/knit_logo/knit_logo2.png' %}" alt="image02" />-->
-                <!--</div>-->
-			<!--</div>-->
-			<!--<div class="da-slide">-->
-				<!--<h2>Планируй</h2>-->
-				<!--<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>-->
-				<!--<a href="#" class="da-link">Read more</a>-->
-				<!--<div class="da-img">-->
-                    <!--<img src="{% static 'img/knit_logo/knit_logo3.png' %}" alt="image03" />-->
-                <!--</div>-->
-			<!--</div>-->
-			<!--<div class="da-slide">-->
-				<!--<h2>Сохраняй Делись</h2>-->
-				<!--<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>-->
-				<!--<a href="#" class="da-link">Read more</a>-->
-				<!--<div class="da-img">-->
-                    <!--<img src="{% static 'img/knit_logo/knit_logo4.jpg' %}" alt="image04" />-->
-                <!--</div>-->
-			<!--</div>-->
-			<!--<nav class="da-arrows">-->
-				<!--<span class="da-arrows-prev"></span>-->
-				<!--<span class="da-arrows-next"></span>-->
-			<!--</nav>-->
-		<!--</div>-->
-
-	<!--</div>-->
-	<!-- end: Slider -->
     <!--Slider-Carusel-->
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -58,25 +14,26 @@
           </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="{% static 'img/slider_1.jpg' %}" class="d-block w-100" alt="slide_1">
+              <img src="{% static 'img/style/St4_Big_5.jpg' %}" class="d-block w-100" alt="slide_1">
               <div class="carousel-caption d-none d-md-block">
-                <h1>Вяжи</h1>
+                <h1 style="color: black;">! Сайт находится в разработке !</h1>
                 <h3>Много вяжешь?..Вяжи ещё больше с Веб-блокнотом!</h3>
-                  <a href="/accounts/sign_up">Узнать больше!</a>
+                  <a href="/accounts/sign_up">Начать</a>
+<!--                  <a href="/accounts/sign_up">Узнать больше!</a>-->
               </div>
             </div>
             <div class="carousel-item">
-              <img src="{% static 'img/slider_2.jpg' %}" class="d-block w-100" alt="slider_2">
+              <img src="{% static 'img/style/St4_Big_1.jpg' %}" class="d-block w-100" alt="slider_2">
               <div class="carousel-caption d-none d-md-block">
-                <h5>Second slide label</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h5></h5>
+                <p></p>
               </div>
             </div>
             <div class="carousel-item">
-              <img src="{% static 'img/slider_3.jpg' %}" class="d-block w-100" alt="slider_3">
+              <img src="{% static 'img/style/St4_Big_6.jpg' %}" class="d-block w-100" alt="slider_3">
               <div class="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                <h5></h5>
+                <p></p>
               </div>
             </div>
           </div>
@@ -90,35 +47,86 @@
           </a>
     </div>
     <!--Slider-Carusel-->
-    <div id="index_bg" class="contanier">
-        <h1 style="text-shadow:7px 7px 7px grey; color: #c5648f;">Веб-блокнот по вязанию</h1>
-        <h3 style="text-shadow:7px 7px 7px grey;">Планируй. Сохраняй. Делись. Вяжи))</h3>
-        <h3>
-            <a href="/webnotes/index" role="button" class="btn btn-info" style="margin-top: 20px;">Открыть блокнот</a></h3>
+    <div class="contanier">
+        <h5 id="first">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</h5>
     </div>
-    <div id="content" class="contanier">
-        <div>
-            <h5>Популярные узоры</h5>
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="{% static 'img/images/ajup.jpg' %}">
-                </div>
-                <div class="col-md-4">
-                    <img src="{% static 'img/images/djakard.jpg' %}" >
-                </div>
-                <div class="col-md-4">
-                    <img src="{% static 'img/images/rezinka.jpg' %}" ></div>
+    <div class="contanier">
+        <div class="row">
+            <div class="col-md-4">
+                <img class="img-round" src="{% static 'img/style/St4_Small_5.jpg' %}" alt="">
+                <h2></h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                <p><a class="btn btn-info" href="#" role="button">Пряжа &raquo;</a></p>
             </div>
+            <div class="col-md-4">
+                <img class="img-round" src="{% static 'img/style/St4_Small_3.jpg' %}" alt="">
+                <h2></h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                <p><a class="btn btn-info" href="#" role="button">Инструменты &raquo;</a></p>
+              </div>
+            <div class="col-md-4">
+                <img class="img-round" src="{% static 'img/style/St4_Small_4.jpg' %}" alt="">
+                <h2></h2>
+                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                <p><a class="btn btn-info" href="#" role="button">Узоры &raquo;</a></p>
+              </div>
+        </div>
+
+    </div>
+    <hr class="line-divider">
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <h5 style="font-style: italic;">Веб-записи</h5>
             <div class="row">
+                {% for webnote in public_webnotes %}
                 <div class="col-md-4">
-                    <img src="{% static 'img/images/rezinka2.jpg' %}">
+                    <div class="card mb-4 shadow-sm">
+                      <img src="/media/{{ webnote.image }}" class="img-fluid" alt="Фото изделия">
+                      <div class="card-body">
+                          <hr>
+                          <p class="card-text">{{ webnote.user }}</p>
+                          <p class="card-title">{{ webnote.project_name }}</p>
+                          <small class="text-muted">{{ webnote.craft }}</small>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <a class="btn btn-sm btn-outline-secondary" href="/webnotes/details/{{ webnote.id }}" role="button">Просмотреть</a>
+                        <!-- Эта операция еще не реализована-->
+                           <a class="btn btn-sm btn-outline-secondary disabled" href="#" role="button">Сохранить</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+                {% endfor %}
+</div>
+        </div>
+    </div>
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <h5 style="font-style: italic;">Узоры</h5>
+            <div class="row">
+                {% for pattern in public_patterns %}
                 <div class="col-md-4">
-                    <img src="{% static 'img/images/rezinka3.jpg' %}" >
+                  <div class="card mb-4 shadow-sm">
+                      <img src="/media/{{ pattern.image }}" class="img-fluid" alt="Фото изделия">
+                      <div class="card-body">
+                          <hr>
+                          <p class="card-text">{{ pattern.user }}</p>
+                          <p class="card-title">{{ pattern.name }}</p>
+                          <small class="text-muted">{{ pattern.description }}</small>
+                      <div class="d-flex justify-content-between align-items-center">
+                          <div class="btn-group">
+                              <a class="btn btn-sm btn-outline-secondary" href="/patterns/details/{{ pattern.id }}" role="button">Просмотреть</a>
+                              <!-- Эта операция еще не реализована-->
+                              <a class="btn btn-sm btn-outline-secondary disabled" href="#" role="button">Сохранить</a>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-md-4">
-                    <img src="{% static 'img/images/rezinka4.jpg' %}" ></div>
-            </div>
+                {% endfor %}
+</div>
         </div>
     </div>
 {% endblock content %}

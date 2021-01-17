@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
-from hashlib import md5
-from datetime import datetime
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+
 from django.http import JsonResponse
+from webnotes.models import Webnote, Tool, Pattern, Yarn
 
 
 def sign_up(request):
@@ -77,6 +77,10 @@ def sign_out(request):
 def profile(request):
     data = dict()
     data['title'] = 'Профиль'
+    data['number_webnotes'] = Webnote.objects.filter(user_id=request.user.id).count()
+    data['number_patterns'] = Pattern.objects.filter(user_id=request.user.id).count()
+    data['number_tools'] = Tool.objects.filter(user_id=request.user.id).count()
+    data['number_yarns'] = Yarn.objects.filter(user_id=request.user.id).count()
     return render(request, 'accounts/profile.html', context=data)
 
 
@@ -91,3 +95,26 @@ def ajax_reg(request):
         response['message'] = 'Логин свободен'
     return JsonResponse(response)
 
+
+# def pass_change(request):
+#     data = dict()
+#     if request.method == 'GET':
+#         if request.user.is_authenticated:
+#             data['title'] = 'Форма для смены пароля'
+#             return render(request, 'accounts/password_change_form.html', context=data)
+#         else:
+#             logout(request)
+#             return redirect('sign_in/')
+#     elif request.method == 'POST':
+#         old_pass = request.POST.get('old_pass')
+#         new_pass1 = request.POST.get('new_pass1')
+#         new_pass2 = request.POST.get('new_pass2')
+#         # Смена пароля пользователя
+#
+#         return render(request, 'accounts/password_change_form.html', context=data)
+#
+#
+# def pass_change_done(request):
+#     data = dict()
+#     data['title'] = 'Пароль изменен'
+#     return render(request, 'accounts/password_change_done.html', context=data)

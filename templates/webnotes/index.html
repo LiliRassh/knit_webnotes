@@ -4,43 +4,73 @@
 
 
 {% block content %}
-<div class="container">
-    <div>
-        <h1 class="title">{{ title }}</h1>
-    </div>
-    {% if user.username == 'superadmim1' %}
-        <a href="/webnotes/create" id="btn_add_notes" class="btn btn-info" role="button">Добавить запись</a>
-    {% endif %}
-    {% for note in page_obj  %}
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row no-gutters">
-                <div class="col-md-4">
-                    <img src="/media/{{ note.image }}" class="card-img" alt="Фото изделия">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ note.project_name }}</h5>
-                        <p class="card-text">
-                            Кому: {{ note.for_who }}<br>Статус: {{ note.status }}
-                        </p>
-                        <p class="card-text">
-                            {{ note.note }}<br>
-                            <small class="text-muted">{{ note.craft }}</small>
-                        </p>
-                    </div>
-                    <p>
-                        <a class="btn-outline-success" href="/webnotes/details/{{ note.id }}" role="button">Посмотреть</a>
-                        {% if user.username == 'superadmim1' %}
-                            <a class="btn-outline-info" href="/webnotes/edit/{{ note.id }}" role="button">Изменить</a>
-                            <a class="btn-outline-secondary" href="/webnotes/delete/{{ note.id }}" role="button">Удалить</a>
-                        {% endif %}
-                    </p>
-                </div>
-            </div>
+<div class="container" style="margin: 0px 50px">
+    <h1 class="title" style="margin: 50px;">{{ title }}</h1>
+    <div class="row" style="margin: 10px 0px">
+        <div class="col-md-3" style="border-right: solid 1px #b9d3c6">
+            {% if user.is_authenticated %}
+                <a href="/webnotes/create" id="btn_add_notes" class="btn btn-info" role="button">Добавить запись</a>
+            {% endif %}
+
+            <ul class="list-group" style="width:80%">
+                <li class="list-group-item">
+                    <a class="link" href="/webnotes/{{ user.id }}">Мой Веб-блокнот</a>
+                    <hr>
+                    <ul class="list-group" style="list-style-type: none; padding: 0px 10px ;" >
+                        <li><a class="link" href="/webnotes/{{ user.id }}">Все проекти</a></li>
+                        <li><a class="link" href="#">Публичные</a></li>
+                        <li><a class="link" href="#">Приватные</a></li>
+                        <li><a class="link" href="#">Завершенные</a></li>
+                        <li><a class="link" href="#">В процессе</a></li>
+                    </ul>
+                </li>
+                <li class="list-group-item">
+                        <a class="link" href="/patterns/{{ user.id }}"> Мои Узоры</a>
+                </li>
+                <li class="list-group-item">
+                    <a class="link" href="/tools/{{ user.id }}">Инструменты</a>
+                </li>
+                <li class="list-group-item">
+                    <a class="link" href="/yarns/{{ user.id }}">Пряжа</a>
+                </li>
+
+            </ul>
         </div>
-    {% endfor %}
-    <div class="pagination" style="margin-top: 20px">
-        <nav aria-label="Page navigation example">
+        <div class="col-md-8">
+            {% for webnote in page_obj %}
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="/media/{{ webnote.image }}" class="card-img" alt="Фото изделия">
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ webnote.project_name }}
+                                    <span class="badge badge-pill badge-success">{{ webnote.access }}</span>
+                                </h5>
+                                <p class="card-text">
+                                    Кому: {{ webnote.for_who }}<br>Статус: {{ webnote.status }}
+                                </p>
+                                <p class="card-text">{{ webnote.note }}<br>
+                                    <small class="text-muted">{{ webnote.craft }}</small>
+                                </p>
+                                <!--<p class="card-text">Узор: {{ pattern.pattern.name }}</p>-->
+                                <!--<p class="card-text">Пряжа: {{ yarn.name }}</p>-->
+                                <!--<p class="card-text">Инструменты: {{ tool.name }}</p>-->
+                            </div>
+                            <p>
+                                <a class="btn-outline-success" href="/webnotes/details/{{ webnote.id }}" role="button">Просмотреть</a>
+                                {% if user.is_authenticated %}
+                                    <a class="btn-outline-info" href="/webnotes/edit/{{ webnote.id }}" role="button">Изменить</a>
+                                    <a class="btn-outline-secondary" href="/webnotes/delete/{{ webnote.id }}" role="button">Удалить</a>
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="pagination" style="margin-top: 20px">
+                <nav aria-label="Page navigation example">
             <ul class="pagination">
                 <!--Переход назад на предыдущую страницу-->
                 {% if page_obj.has_previous %}
@@ -70,9 +100,16 @@
                 {% endif %}
             </ul>
         </nav>
+            </div>
+        </div>
     </div>
 </div>
 <style>
+    main{
+        height: 100%;
+        background-image: url("../../static/img/style/St4_Big_12_1.jpg");
+        background-size: cover;
+    }
     #btn_add_notes {
         margin-bottom: 20px;
     }

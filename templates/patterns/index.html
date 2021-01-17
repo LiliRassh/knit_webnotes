@@ -1,0 +1,114 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+
+{% block content %}
+<div class="container">
+    <h1 class="title" style="margin: 50px;">{{ title }}</h1>
+    <div class="row" style="margin: 10px 0px">
+        <div class="col-md-3" style="border-right: solid 1px #b9d3c6">
+            {% if user.is_authenticated %}
+                <a href="/patterns/create" id="btn_add_notes" class="btn btn-info" role="button">Добавить узор</a>
+            {% endif %}
+            <ul class="list-group" style="width:80%">
+                <li class="list-group-item">
+                    <a class="link" href="/webnotes/{{ user.id }}">Мой Веб-блокнот</a>
+                    <hr>
+                    <ul class="list-group" style="list-style-type: none; padding: 0px 10px ;" >
+                        <li><a class="link" href="/webnotes/{{ user.id }}">Все проекти</a></li>
+                        <li><a class="link" href="#">Публичные</a></li>
+                        <li><a class="link" href="#">Приватные</a></li>
+                        <li><a class="link" href="#">Завершенные</a></li>
+                        <li><a class="link" href="#">В процессе</a></li>
+                    </ul>
+                </li>
+                <li class="list-group-item">
+                        <a class="link" href="/patterns/{{ user.id }}"> Мои Узоры</a>
+                </li>
+                <li class="list-group-item">
+                    <a class="link" href="/tools/{{ user.id }}">Инструменты</a>
+                </li>
+                <li class="list-group-item">
+                    <a class="link" href="/yarns/{{ user.id }}">Пряжа</a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="col-md-8">
+            {% for pattern in page_obj  %}
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="card-title">
+                        <h4 class="card-text" style="padding: 5px 15px; text-align:center;">{{ pattern.name }}</h4>
+                    </div>
+                    <div class="row no-gutters">
+                        <div class="col-md-6">
+                            <p class="card-text">Узор</p>
+                            <img src="/media/{{ pattern.image }}" class="card-img" alt="Фото узора">
+                        </div>
+                        <div class="col-md-6">
+                            <p class="card-title">Схема узора</p>
+                            <img src="/media/{{ pattern.scheme }}" class="card-img" alt="Фото схемы узора">
+                        </div>
+
+                    </div>
+                    <div class="row no-gutters">
+                        <div class="col-md-10">
+                            <p class="card-text">Ссылка: {{ pattern.source }}</p>
+                            <p>
+                                <a class="btn-outline-success" href="/patterns/details/{{ pattern.id }}" role="button">Посмотреть</a>
+                                {% if user.is_authenticated %}
+                                    <a class="btn-outline-info" href="/patterns/edit/{{ pattern.id }}" role="button">Изменить</a>
+                                    <a class="btn-outline-secondary" href="/patterns/delete/{{ pattern.id }}" role="button">Удалить</a>
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="pagination" style="margin-top: 20px">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <!--Переход назад на предыдущую страницу-->
+                        {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page=1">1</a>
+                        </li>
+                        {% endif %}
+                        <!--Номер текущей страницы-->
+                        <li class="page-item active">
+                            <a class="page-link" href="?page={{ page_obj.number }}">{{ page_obj.number }}</a>
+                        </li>
+                        <!--Переход вперед на следующую страницу-->
+                        {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    main{
+        height: 100%;
+        background-image: url("../../static/img/style/St4_Big_12_1.jpg");
+        background-size: cover;
+    }
+    #btn_add_notes {
+        margin-bottom: 20px;
+    }
+</style>
+{% endblock content %}
