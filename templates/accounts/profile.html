@@ -8,13 +8,34 @@
         <div>
             <h1 class="title">{{ title }}</h1>
         </div>
+        <h2> Личные данные </h2>
+        <hr>
         <h3>
             Пользователь: {{ user.username }}
         </h3>
+        <h3>
+            Почта: {{ user.email }}
+        </h3>
+        <h3>
+            <a class="btn btn-info" href="/accounts/password_change">Сменить пароль</a>
+        </h3>
+        <hr>
+        <h4>
+            Количество проектов: {{ number_webnotes }}
+        </h4>
+        <h4>
+            Количество узоров: {{ number_patterns }}
+        </h4>
+        <h4>
+            Количество инструментов: {{ number_tools }}
+        </h4>
+        <h4>
+            Количество пряжи: {{ number_yarns }}
+        </h4>
     </div>
 <style>
     main{
-        height: 790px;
+        min-height: 790px;
         background-image: url("../../static/img/style/St4_Big_8.jpg");
         background-size: cover;
     }

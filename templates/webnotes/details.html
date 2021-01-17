@@ -5,8 +5,7 @@
 
 {% block content %}
     <div class="container">
-        <h1 class="title">{{ title }}</h1>
-
+        <h2 class="title">{{ title }}</h2>
         <div class="card">
             <div class="card-header">
                 {{ webnote.craft }}
@@ -23,7 +22,11 @@
                 <p class="card-text">
                     <small class="text-muted">Запись добавлена: {{ webnote.create_date|date:'d-m-Y h:m:s' }}</small>
                 </p>
-                <a class="btn btn-link" href="/webnotes/{{ user.id }}" role="button">Вернуться к записям в Веб-блокноте</a>
+                {% if user.is_authenticated %}
+                    <a class="btn btn-link" href="/webnotes/{{ user.id }}" role="button">Вернуться к записям в Веб-блокноте</a>
+                {% else %}
+                    <a class="btn btn-link" href="/webnotes/public" role="button">Вернуться к записям в Веб-блокноте</a>
+                {% endif %}
           </div>
         </div>
 

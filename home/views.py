@@ -1,8 +1,12 @@
 from django.shortcuts import render
+from webnotes.models import Webnote, Pattern
 
 
 def index(request):
-    data = {'title': 'Главная'}
+    data = dict()
+    data['title'] = 'Главная'
+    data['public_webnotes'] = Webnote.objects.filter(access=2)       # [:10]
+    data['public_patterns'] = Pattern.objects.filter(webnote__access=2)
     return render(request, 'home/index.html', context=data)
 
 

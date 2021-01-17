@@ -10,12 +10,18 @@
             <h4 class="card-title">{{ title }}</h4>
         </div>
         <div class="card card-body">
-            <form method="post" action="/patterns/create" enctype="multipart/form-data">
+            <form id="pattern" method="post" action="/patterns/create" onsubmit="return false" enctype="multipart/form-data">
                 {% csrf_token %}
                 {% for field in form_pattern %}
                     {% if field.label == 'User' %}
                         <div class="form-group">
                             <input type="hidden" name="user" value="{{ user.id }}">
+                        </div>
+                    {% elif field.label == 'Название узора' %}
+                        <div class="form-group">
+                            {{ field.label }}
+                            <div>{{ field }}</div>
+                            <div id="name_mess" class="mess"></div>
                         </div>
                     {% else %}
                         <div class="form-group">
@@ -25,6 +31,7 @@
                     {% endif %}
                 {% endfor %}
                 <p style="margin-top: 20px">
+                    <div id="save_mess" class="mess" style="margin-bottom: 10px"></div>
                     <input id="save" type="submit" value="Сохранить" class="btn btn-success">
                     <input id="cancel" type="reset" value="Очистить" class="btn btn-secondary">
                 </p>
@@ -45,3 +52,8 @@
     }
 </style>
 {% endblock content %}
+
+{% block script %}
+    {% load static %}
+    <script src="{% static 'js/pattern_name.js' %}"></script>
+{% endblock script %}

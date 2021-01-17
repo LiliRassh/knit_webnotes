@@ -6,10 +6,17 @@
 {% block content %}
 <div class="container">
     <h1 class="title" style="margin: 50px;">{{ title }}</h1>
+    <div class="row">
     {% if user.is_authenticated %}
         <a href="/yarns/create" id="btn_add_notes" class="btn btn-info" role="button">Добавить пряжу</a>
     {% endif %}
-
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <a class="btn btn-light" href="/webnotes/{{ user.id }}">Мой Веб-блокнот</a>
+        <a class="btn btn-light" href="/patterns/{{ user.id }}"> Мои Узоры</a>
+        <a class="btn btn-light" href="/tools/{{ user.id }}">Инструменты</a>
+        <a class="btn btn-light" href="/yarns/{{ user.id }}">Пряжа</a>
+    </div>
+    </div>
     <table class="table_index" border="1">
         <tr>
             <th>Этикетка</th>

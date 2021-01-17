@@ -21,10 +21,10 @@
                     <a class="nav-link" href="/calculator">Калькулятор</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/patterns/{{ user.id }}">Узоры</a>
+                    <a class="nav-link" href="/patterns/public">Узоры</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/webnotes/{{ user.id }}">Веб-блокнот</a>
+                    <a class="nav-link" href="/webnotes/public">Веб-записи</a>
                 </li>
 
 
@@ -45,8 +45,8 @@
                             <a class="dropdown-item" href="/accounts/sign_up">Зарегистрироваться</a>
                         {% else %}
                             <a class="dropdown-item" href="/webnotes/{{ user.id }}">Мой Веб-блокнот</a>
-                            <a class="dropdown-item" href="/accounts/profile">Личные данные</a>
-                            <a class="dropdown-item" href="/patterns/{{ user.id }}">Узоры</a>
+                            <a class="dropdown-item" href="/accounts/profile">Мой профиль</a>
+                            <a class="dropdown-item" href="/patterns/{{ user.id }}">Мои Узоры</a>
                             <a class="dropdown-item" href="/tools/{{ user.id }}">Инструменты</a>
                             <a class="dropdown-item" href="/yarns/{{ user.id }}">Пряжа</a>
                             <!--<a class="dropdown-item" href="/samples">Образцы</a>-->

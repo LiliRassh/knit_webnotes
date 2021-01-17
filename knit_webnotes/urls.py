@@ -29,7 +29,7 @@ urlpatterns = [
     path('samples/', include('samples.urls')),
     path('tools/', include('tools.urls')),
     path('webnotes/', include('webnotes.urls')),
-    path('yarns/', include('yarns.urls'))
+    path('yarns/', include('yarns.urls')),
 ]
 
 if settings.DEBUG:

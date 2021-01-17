@@ -19,11 +19,6 @@ body {
     }
    }
 
-#content{
-    margin-top: 0px;
-    margin-left: 50px;
-    }
-
 /*Загаловок у страницы  #6e675f */
 .title{
     text-align: center;
@@ -49,15 +44,6 @@ div.row{
 }
 
 
-/* For form center sign_up, sign_in*/
-.form_style{
-    width: 400px;
-    float: right;
-    border-radius: .25rem;
-    padding: 20px;
-    border: 1px solid #93a5af;
-    box-shadow: 2px 5px 5px #93a5af;
-}
 /*для таблицы в tools/index.html*/
 .table_index{
     background-color: white;
@@ -84,17 +70,17 @@ div.row{
     box-shadow:         1px 1px 2px 5px #89abb0;
     }
 
-li.nav-item:active{
+/*li.nav-item:active{
     border-bottom: 1px solid #81B8BD;
     border-radius: 50%
-}
-
-li.nav-item active{
-    border-bottom: 1px solid #81B8BD;
-    border-radius: 50%
-}
+}*/
 
 .line-divider{
     border: 1px solid #89abb0;
     box-shadow: 1px 1px 2px 2px #89abb0;
+}
+
+/* фон для div.card в calculator */
+#calc-bg-color{
+    background-color: rgba(255, 255, 255, 0.6);
 }

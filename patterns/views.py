@@ -1,16 +1,17 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from django.core.paginator import Paginator
-from webnotes.models import Pattern
+from django.http import JsonResponse
+from webnotes.models import Pattern, Webnote
 from .forms import PatternForm, PatternForm2
 
 
 def index(request, user_id):
     data = dict()
-    data['title'] = 'Коллекция узоров'
-    user = get_object_or_404(User, id=user_id)
-    data['user'] = user
+    data['title'] = 'Моя Коллекция узоров'
+    # user = get_object_or_404(User, id=user_id)
+    # data['user'] = user
     if request.user.is_authenticated:
         all_patterns = Pattern.objects.filter(user=user_id)
         data['patterns'] = all_patterns
@@ -49,12 +50,8 @@ def details(request, pattern_id):
     data = dict()
     data['title'] = 'Информация об узоре'
     if request.method == 'GET':
-        if request.user.is_authenticated:
-            data['pattern'] = Pattern.objects.get(id=pattern_id)
-            return render(request, 'patterns/details.html', context=data)
-        else:
-            logout(request)
-            return redirect('/accounts/sign_up')
+        data['pattern'] = Pattern.objects.get(id=pattern_id)
+        return render(request, 'patterns/details.html', context=data)
 
 
 def edit(request, pattern_id):
@@ -73,8 +70,6 @@ def edit(request, pattern_id):
         form2 = PatternForm2(request.POST)
         if form2.is_valid():
             pattern.name = form2.cleaned_data['name']
-            pattern.image = form2.cleaned_data['image']
-            pattern.scheme = form2.cleaned_data['scheme']
             pattern.description = form2.cleaned_data['description']
             pattern.source = form2.cleaned_data['source']
             pattern.save()
@@ -96,3 +91,27 @@ def delete(request, pattern_id):
     elif request.method == 'POST':
         pattern.delete()
         return redirect(f'/patterns/{request.user.id}')
+
+
+def ajax_name(request):
+    response = dict()
+    name = request.GET.get('name')
+    try:
+        Pattern.objects.get(name=name)
+        response['message'] = 'Есть узор с таким названием!'
+    except Pattern.DoesNotExist:
+        response['message'] = 'Название узора свободено'
+    return JsonResponse(response)
+
+
+def public(request):
+    data = dict()
+    data['title'] = 'Коллекция узоров'
+    public_patterns = Pattern.objects.filter(webnote__access=2)
+    # print(public_patterns)
+    data['patterns'] = public_patterns
+    paginator = Paginator(public_patterns, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    data['page_obj'] = page_obj
+    return render(request, 'patterns/public.html', context=data)

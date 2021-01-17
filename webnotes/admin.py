@@ -34,4 +34,5 @@ class YarnAdmin(admin.ModelAdmin):
 
 @admin.register(Webnote)
 class WebnoteAdmin(admin.ModelAdmin):
-    list_display = ('id', 'project_name', 'user', 'create_date', 'for_who', 'craft', 'status', 'access')
+    list_display = ('id', 'project_name', 'user', 'create_date', 'for_who', 'craft', 'status',
+                    'access')

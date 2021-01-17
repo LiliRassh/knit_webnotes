@@ -5,19 +5,24 @@
 
 {% block content %}
 <div class="container">
+    <h2 class="title">{{ title }}</h2>
     <div class="card mb-3" style="max-width: 760px;">
         <div class="card-header">
-            {{ title }}
+            <h5 class="card-title">{{pattern.name}}</h5>
         </div>
         <div class="card-body">
-            <h5 class="card-title">{{pattern.name}}</h5>
-            <img src="/media/{{ pattern.image }}" class="card-img" alt="Фото узора" width="50%">
-            <img src="/media/{{ pattern.scheme }}" class="card-img" alt="Фото схемы узора" width="50%">
+            <!--<h5 class="card-title">{{pattern.name}}</h5>-->
+            <img src="/media/{{ pattern.image }}" class="card-img" alt="Фото узора" width="30%">
+            <img src="/media/{{ pattern.scheme }}" class="card-img" alt="Фото схемы узора" width="30%">
             <p class="card-text"><b>Описание узора: </b>{{ pattern.description }}</p>
             <p class="card-text"><b>Ссылка: </b>{{ pattern.source }}</p>
         </div>
         <div class="card-footer">
-            <a class="btn btn-link" href="/patterns/{{ user.id }}" role="button">Вернуться к коллекции узоров</a>
+            {% if user.is_authenticated %}
+                <a class="btn btn-link" href="/patterns/{{ user.id }}" role="button">Вернуться к Коллекции узоров</a>
+            {% else %}
+                <a class="btn btn-link" href="/patterns/public" role="button">Вернуться к Коллекции узоров</a>
+            {% endif %}
         </div>
     </div>
 </div>

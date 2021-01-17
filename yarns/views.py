@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from webnotes.models import Yarn
 from .forms import YarnForm, YarnForm2
@@ -9,8 +9,6 @@ from django.core.paginator import Paginator
 def index(request, user_id):
     data = dict()
     data['title'] = 'Моя пряжа'
-    user = get_object_or_404(User, id=user_id)
-    data['user'] = user
     if request.method == 'GET':
         if request.user.is_authenticated:
             all_yarns = Yarn.objects.filter(user=user_id)
@@ -79,7 +77,6 @@ def edit(request, yarn_id):
             yarn.color_lot = form2.cleaned_data['color_lot']
             yarn.weight = form2.cleaned_data['weight']
             yarn.length = form2.cleaned_data['length']
-            yarn.label = form2.cleaned_data['label']
             yarn.source = form2.cleaned_data['source']
             yarn.save()
         return redirect(f'/yarns/{request.user.id}')

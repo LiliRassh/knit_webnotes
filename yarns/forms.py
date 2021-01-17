@@ -20,9 +20,8 @@ class YarnForm2(forms.ModelForm):
     color_lot = forms.CharField(label='Цвет пряжи или COLOR - LOT', help_text='Например: 141 - 368700')
     weight = forms.IntegerField(label='Вес')
     length = forms.IntegerField(label='Длина')
-    label = forms.FileField(label='Фото этикетки')
     source = forms.URLField(label='Ссылка на ресурс', help_text='Ссылка на сайт магазина или на обзор пряжи')
 
     class Meta:
         model = Yarn
-        fields = ('name', 'color_lot', 'weight', 'length', 'label', 'source')
+        fields = ('name', 'color_lot', 'weight', 'length', 'source')

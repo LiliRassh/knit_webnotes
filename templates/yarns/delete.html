@@ -11,7 +11,7 @@
             </div>
             <div class="card card-body">
                 <h5 class="card-text">Название: {{ yarn.name }}</h5>
-                <img src="/media/{{ yarn.label }}" class="card-img" alt="Фото этикетки">
+                <img src="/media/{{ yarn.label }}" alt="Фото этикетки" width="20%">
                 <p class="card-text">Метраж: {{yarn.weight}}гр - {{ yarn.length }}м</p>
                 <form action="/yarns/delete/{{ yarn.id }}" method="post">
                     {% csrf_token %}

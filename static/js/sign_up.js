@@ -11,6 +11,7 @@ $(document).ready(() => {
     let regExp2 = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[_\-\$#&])[A-Za-z0-9_\-\$#&]{8,}$/;
     // Email
     let regExp3 = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
+    
     $("#login").blur(() => {
         let loginX = $("#login").val();
         if (regExp1.test(loginX)) {

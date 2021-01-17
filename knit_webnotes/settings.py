@@ -31,12 +31,12 @@ ALLOWED_HOSTS = [u'127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'home',
     'accounts',
     'calculator',
@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'samples',
     'tools',
     'webnotes',
-    'yarns'
+    'yarns',
+    'django.contrib.admin'
 ]
 
 MIDDLEWARE = [
@@ -76,6 +77,10 @@ TEMPLATES = [
         },
     },
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'knit_webnotes.wsgi.application'
 
@@ -137,4 +142,11 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'lili.rassh202012@gmail.com'
+EMAIL_HOST_PASSWORD = '847122KJow'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

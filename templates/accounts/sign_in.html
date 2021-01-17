@@ -6,34 +6,43 @@
 {% block content %}
     {% load static %}
     <div class="container">
-        <div class="form_style" style="margin: 190px 150px;">
+        <div class="d-flex justify-content-center">
+            <div>
             <h1 class="title">{{ title }}</h1>
             <form id="form2" action="/accounts/sign_in" method="post">
             {% csrf_token %}
             <p>
                 <label for="login">Логин:</label><br>
-                <input type="text" id="login" name="login" class="inp" required>
-                <!--<div id="login_mess" class="mess"></div>-->
+                <input type="text" id="login" name="login" class="form-control" required>
             </p>
             <p>
                 <label for="pass1">Пароль:</label><br>
-                <input type="password" id="pass1" name="pass1" class="inp" required>
+                <input type="password" id="pass1" name="pass1" class="form-control" required>
             </p>
+            <p>
+                    <a href="{% url 'password_reset' %}">Забыли пароль?</a>
+                </p>
             <p style="margin-top: 30px">
-                <input id="submit" type="submit" value="Войти" class="btn btn-success" style="width: 150px">
-                <input type="reset" value="Сбросить" class="btn btn-success" style="width: 150px">
+                <input id="submit" type="submit" value="Войти" class="btn btn-success" style="width: 9.25rem">
+                <input type="reset" value="Отмена" class="btn btn-secondary" style="width: 9.25rem">
             </p>
+                <a id="reg" class="btn btn-outline-primary w-100" href="/accounts/sign_up">Зарегистрироваться</a>
+                <hr class="line-divider"><p class="text-center">Войти через</p>
+                <a class="btn btn-success w-100 disabled" href="">Google</a>
+                <a class="btn btn-info w-100 disabled" href="">Facebook</a>
+                <hr class="line-divider">
         </form>
         </div>
+        </div>
     </div>
-<style>
+    <style>
     main{
-        height: 790px;
-        background-image: url("../../static/img/style/St4_Big_7_1.jpg");
-        background-size: cover;
+        max-width:100%;
+        min-height: 800px;
     }
-    .inp {
-        width: 300px;
-    }
-</style>
+    </style>
 {% endblock content %}
+
+
+
+

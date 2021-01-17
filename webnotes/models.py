@@ -30,7 +30,6 @@ class Tool(models.Model):
     type = models.CharField(max_length=100, null=True, blank=True)
     material = models.CharField(max_length=100, null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    # webnote = models.ManyToManyField(Webnote)
 
     def __str__(self):
         return f'{self.name}: {self.size}мм - {self.producer}'
@@ -43,7 +42,6 @@ class Pattern(models.Model):
     description = models.TextField(max_length=1024)
     source = models.URLField(null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    # webnote = models.ManyToManyField(Webnote)
 
     def __str__(self):
         return self.name
@@ -57,7 +55,6 @@ class Yarn(models.Model):
     label = models.FileField(null=True, upload_to='upload/yarns', blank=True)
     source = models.URLField(null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    # webnote = models.ManyToManyField(Webnote, verbose_name='Проект')
 
     def __str__(self):
         return f'{self.name}:{self.color_lot}/{self.weight}гр-{self.length}м'
@@ -75,9 +72,9 @@ class Webnote(models.Model):
     access = models.ForeignKey(Access, verbose_name='Доступ другим пользователям', on_delete=models.CASCADE, default=0)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     status = models.ForeignKey(Status, verbose_name='Статус', on_delete=models.CASCADE, default=0)
-    tool = models.ManyToManyField(Tool, verbose_name='Инструменты', null=True, blank=True)
-    pattern = models.ManyToManyField(Pattern, verbose_name='Узор', null=True, blank=True)
-    yarn = models.ManyToManyField(Yarn, verbose_name='Пряжа', null=True, blank=True)
+    tool = models.ManyToManyField(Tool, verbose_name='Инструменты')
+    pattern = models.ManyToManyField(Pattern, verbose_name='Узор')
+    yarn = models.ManyToManyField(Yarn, verbose_name='Пряжа')
 
     def __str__(self):
-        return f'{self.project_name}-{self.for_who}: {self.craft}{self.status}/{self.access}'
+        return f'{self.project_name}: {self.craft}/{self.status}/{self.access}'
