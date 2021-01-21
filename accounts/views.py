@@ -91,8 +91,10 @@ def ajax_reg(request):
     try:
         User.objects.get(username=login_y)
         response['message'] = 'Логин занят'
+        response['color_message'] = 'red'
     except User.DoesNotExist:
         response['message'] = 'Логин свободен'
+        response['color_message'] = 'green'
     return JsonResponse(response)
 
 

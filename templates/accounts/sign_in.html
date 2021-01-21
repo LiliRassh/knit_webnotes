@@ -20,27 +20,22 @@
                 <input type="password" id="pass1" name="pass1" class="form-control" required>
             </p>
             <p>
-                    <a href="{% url 'password_reset' %}">Забыли пароль?</a>
-                </p>
+                <a href="{% url 'password_reset' %}">Забыли пароль?</a>
+            </p>
             <p style="margin-top: 30px">
                 <input id="submit" type="submit" value="Войти" class="btn btn-success" style="width: 9.25rem">
                 <input type="reset" value="Отмена" class="btn btn-secondary" style="width: 9.25rem">
             </p>
-                <a id="reg" class="btn btn-outline-primary w-100" href="/accounts/sign_up">Зарегистрироваться</a>
-                <hr class="line-divider"><p class="text-center">Войти через</p>
-                <a class="btn btn-success w-100 disabled" href="">Google</a>
-                <a class="btn btn-info w-100 disabled" href="">Facebook</a>
-                <hr class="line-divider">
+            <a id="reg" class="btn btn-outline-primary w-100" href="/accounts/sign_up">Зарегистрироваться</a>
+            <hr class="line-divider">
+<!--                <p class="text-center">Войти через</p>-->
+<!--                <a class="btn btn-success w-100 disabled" href="">Google</a>-->
+<!--                <a class="btn btn-info w-100 disabled" href="">Facebook</a>-->
+<!--                <hr class="line-divider">-->
         </form>
         </div>
         </div>
     </div>
-    <style>
-    main{
-        max-width:100%;
-        min-height: 800px;
-    }
-    </style>
 {% endblock content %}
 
 

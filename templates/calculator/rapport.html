@@ -5,14 +5,14 @@
 
 {% block content %}
 <div class="contanier">
-    <div class="card" id="card_info" style="width: 90%; margin: 20px auto;">
+    <div class="d-flex justify-content-center">
+        <div class="card" id="card_info">
         <div class="card-header">
             <h4 class="title">{{ title }}:</h4>
         </div>
         <div class="card-body">
             <form id="rapport" method="post" action="/calculator/rapport">
                 {% csrf_token %}
-
                 <div class="form-group row" style="margin: 10px 0px">
                     <label for="num1" class="col-sm-6 col-form-label">Введите количество петель в раппорте:</label>
                     <div class="col-sm-4">
@@ -60,6 +60,7 @@
             <a href="/calculator" class="btn btn-link" role="button">Вернуться к калькулятору</a>
         </div>
     </div>
+    </div>
 </div>
 <script>
         $(document).ready(()=>{
@@ -74,8 +75,8 @@
                 let res_down = num2%num1;
 
                 $('#res_rapp').html(res_rapp+' = '+res_stitch+' п.');
-                $('#res_up').html(res_up+' п. = '+(res_rapp+1)*num1+' п.');
-                $('#res_down').html(res_down+' п. = '+res_stitch+' п.');
+                $('#res_up').html(res_up+' п. -> ' + (res_rapp+1) + ' раппорт = '+(res_rapp+1)*num1+' п.');
+                $('#res_down').html(res_down+' п. -> ' + (res_rapp) + ' раппорт  = '+res_stitch+' п.');
                 });
 
             $('#cancel').click(()=>{
