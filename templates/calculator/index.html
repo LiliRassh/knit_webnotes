@@ -11,19 +11,19 @@
             <h4 class="title">{{ title }}:</h4>
         </div>
         <div class="card-body">
-            <a href="/calculator" class="btn btn-outline-info w-100" role="button" onclick="openWin('/calculator/rows', 'Расчет рядов')">Расчет количества рядов</a><br>
-            <a href="/calculator" class="btn btn-outline-info w-100" role="button" onclick="openWin('/calculator/stitches', 'Расчет петель')">Расчет количества петель</a><br>
-            <a href="/calculator" class="btn btn-outline-info w-100" role="button" onclick="openWin('/calculator/rapport', 'Расчет раппорта')">Расчет раппорта</a><br>
+            <a href="/calculator/rows" class="btn btn-outline-info w-100" role="button" target="_blank">Расчет количества рядов</a><br>
+            <a href="/calculator/stitches" class="btn btn-outline-info w-100" role="button" target="_blank">Расчет количества петель</a><br>
+            <a href="/calculator/rapport" class="btn btn-outline-info w-100" role="button" target="_blank">Расчет раппорта</a><br>
         </div>
     </div>
     </div>
 </div>
-<script>
-    function openWin (newUrl, titleName) {
-        let newWindow = window.open(newUrl, titleName, 'width=700, height=600, resizable=yes, titlebar=yes');
-        return newWindow;
-    };
-</script>
+<!--<script>-->
+<!--    function openWin (newUrl, titleName) {-->
+<!--        let newWindow = window.open(newUrl, titleName, 'width=700, height=600, resizable=yes, titlebar=yes');-->
+<!--        return newWindow;-->
+<!--    };-->
+<!--</script>-->
 <style>
     main{
         max-width:100%;

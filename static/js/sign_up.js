@@ -21,17 +21,17 @@ $(document).ready(() => {
                 data: "login=" + loginX,
                 success: function (result) {
                     if (result.message == "Логин занят") {
-                        $("#login_mess").html(result.message);
+                        $("#login_mess").html(result.message).css('color', 'red');
                         correct1 = false;
                     } else {
-                        $("#login_mess").html("");
+                        $("#login_mess").html(result.message).css('color', 'green');
                         correct1 = true;
                     }
                 }
             });
         } else {
             correct1 = false;
-            $("#login_mess").html("Логин не соответствует шаблону безопасности!")
+            $("#login_mess").html("Логин должен быть не менее 6 символов, латиница, цифры!").css('color', 'red');
         }
         //$("#login_mess").html(loginX);
     });
@@ -41,7 +41,7 @@ $(document).ready(() => {
             $("#form1").attr("onsubmit", "return true");
         } else {
             $("#form1").attr("onsubmit", "return false");
-            alert("Форма содержит не корректные данные! \nОтправка данных заблокированна!")
+            alert("Форма содержит не корректные данные! \nПроверьте поля формы!")
         }
     });
 });

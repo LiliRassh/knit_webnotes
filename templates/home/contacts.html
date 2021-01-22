@@ -6,7 +6,46 @@
 {% block content %}
 
     <div class="container">
-        <h1 class="title">{{ title }}</h1>
+        <div class="d-flex justify-content-center">
+            <div>
+                <h1 class="title">{{ title }}</h1><br>
+                <h5>Есть вопросы или пожелания, напишите нам:</h5>
+                <p><i style="color: #0086ad;">lili.rassh202012@gmail.com</i></p>
+<!--                <form id="contacts" action="/home/contacts" method="post">-->
+<!--                    {% csrf_token %}-->
+<!--                    <p>-->
+<!--                        <label for="email">Ваш E-Mail:</label><br>-->
+<!--                        <input type="email" id="email" name="email" class="form-control" required>-->
+<!--                    </p>-->
+<!--                    <p>-->
+<!--                        <label for="message">Текст сообщения</label><br>-->
+<!--                        <textarea id="message"  class="form-control" name="message" required></textarea>-->
+<!--                    </p>-->
+<!--                    <p style="display: {{ display }}; color: {{ color }}" >{{ report_mess }}</p>-->
+<!--                </form>-->
+<!--                <p class="text-right" style="margin-top: 30px">-->
+<!--                    <input id="submit" type="submit" value="Отправить" class="btn btn-success">-->
+<!--                    <input type="reset" value="Отмена" class="btn btn-secondary">-->
+<!--                </p>-->
+                <h5>Или свяжитесь с нами удобным Вам способом</h5>
+                <hr class="line-divider">
+                <div class="d-flex justify-content-around">
+                        <a class="btn btn-social-icon btn-lg btn-facebook" href="https://www.facebook.com/liliya.rasschupkina" target="_blank">
+                            <span class="fa fa-facebook"></span>
+                        </a>
+                         <a class="btn btn-social-icon btn-lg btn-telegram" href="https://t.me/lili_rassh" target="_blank">
+                            <span class="fa fa-telegram"></span>
+                        </a>
+                         <a class="btn btn-lg btn-social-icon btn-instagram" href="https://www.instagram.com/lili.sind/" target="_blank">
+                            <span class="fa fa-instagram"></span>
+                        </a>
+                        <a class="btn btn-social-icon btn-lg btn-github" href="https://github.com/LiliRassh/knit_webnotes" target="_blank">
+                            <span class="fa fa-github"></span>
+                        </a>
+                    </div>
+                <hr class="line-divider">
+            </div>
+        </div>
     </div>
 
 {% endblock content %}

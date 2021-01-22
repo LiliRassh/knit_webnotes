@@ -5,7 +5,7 @@
 
 {% block content %}
     {% load static %}
-    <!--Slider-Carusel-->
+    <!--Slider-Carousel-->
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
@@ -16,9 +16,9 @@
             <div class="carousel-item active">
               <img src="{% static 'img/style/St4_Big_5.jpg' %}" class="d-block w-100" alt="slide_1">
               <div class="carousel-caption d-none d-md-block">
-                <h1 style="color: black;">! Сайт находится в разработке !</h1>
-                <h3>Много вяжешь?..Вяжи ещё больше с Веб-блокнотом!</h3>
-                  <a href="/accounts/sign_up">Начать</a>
+                <h1></h1>
+                <h3 class="color-for-title">Любишь вязать?..Вяжи ещё больше с Веб-блокнотом!</h3>
+                  <a class="color-for-title" href="/accounts/sign_up"><h4>Начать</h4></a>
 <!--                  <a href="/accounts/sign_up">Узнать больше!</a>-->
               </div>
             </div>
@@ -46,38 +46,40 @@
             <span class="sr-only">Next</span>
           </a>
     </div>
-    <!--Slider-Carusel-->
-    <div class="contanier">
-        <h5 id="first">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</h5>
+    <!--Slider-Carousel-->
+
+    <div class="container">
+        <h2 class="text-center bg-color-work" >! Сайт находится в разработке !</h2>
+        <h5 id="first">Knitting WebNotes - это блокнот для вязальных и творческих проектов, который всегда с тобой.</h5>
     </div>
-    <div class="contanier">
+    <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <img class="img-round" src="{% static 'img/style/St4_Small_5.jpg' %}" alt="">
+                <img class="img-fluid img-round" src="{% static 'img/style/St4_Small_5.jpg' %}" alt="">
                 <h2></h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-info" href="#" role="button">Пряжа &raquo;</a></p>
+                <p>Пряжу для ручного вязания, обычно делят на летнюю и зимнюю. Летняя: лён, хлопок, вискоза, и их комбинирование. Зимняя пряжя это шерсть всех ее разновидностей, а также в смеси с искуственной.
+                <p><a class="btn btn-info" href="/accounts/sign_in" role="button">Пряжа &raquo;</a></p>
             </div>
             <div class="col-md-4">
-                <img class="img-round" src="{% static 'img/style/St4_Small_3.jpg' %}" alt="">
+                <img class="img-fluid img-round" src="{% static 'img/style/St4_Small_3.jpg' %}" alt="">
                 <h2></h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-info" href="#" role="button">Инструменты &raquo;</a></p>
+                <p>Любимые спицы или крючки, а можно вязать и без них - руками! Выбирай, что тебе по душе, на леске или на тросике, деревянные или металические, круглые или кубические, прямые или круговые.</p>
+                <p><a class="btn btn-info" href="/accounts/sign_in" role="button">Инструменты &raquo;</a></p>
               </div>
             <div class="col-md-4">
-                <img class="img-round" src="{% static 'img/style/St4_Small_4.jpg' %}" alt="">
+                <img class="img-fluid img-round" src="{% static 'img/style/St4_Small_4.jpg' %}" alt="">
                 <h2></h2>
-                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                <p><a class="btn btn-info" href="#" role="button">Узоры &raquo;</a></p>
+                <p>Разнообразие узоров поражает воображение - простые, ажурные, косы, резинки, жаккард, рельефные узоры, фантазийные, с вытянутыми петлями... Но у каждой мастерыцы есть своя любимая коллекция.</p>
+                <p><a class="btn btn-info" href="/accounts/sign_in" role="button">Узоры &raquo;</a></p>
               </div>
         </div>
 
     </div>
-    <hr class="line-divider">
-
     <div class="album py-5 bg-light">
+        <hr class="line-divider">
+        <h4 class="text-center" style="font-style: italic;">Популярные Веб-записи</h4>
+        <hr class="line-divider">
         <div class="container">
-            <h5 style="font-style: italic;">Веб-записи</h5>
             <div class="row">
                 {% for webnote in public_webnotes %}
                 <div class="col-md-4">
@@ -103,8 +105,11 @@
         </div>
     </div>
     <div class="album py-5 bg-light">
+        <hr class="line-divider">
+        <h4 class="text-center" style="font-style: italic;">Популярные Узоры</h4>
+        <hr class="line-divider">
         <div class="container">
-            <h5 style="font-style: italic;">Узоры</h5>
+
             <div class="row">
                 {% for pattern in public_patterns %}
                 <div class="col-md-4">

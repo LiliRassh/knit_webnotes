@@ -1,7 +1,5 @@
 body {
     padding-top: 5rem;
-    /*background-image: url("../img/bg-arany-white.jpg");
-    background-size: cover;*/
 }
 
 .bd-placeholder-img {
@@ -19,7 +17,7 @@ body {
     }
    }
 
-/*Загаловок у страницы  #6e675f */
+/*Загаловок у страницы */
 .title{
     text-align: center;
     color: #0086ad;
@@ -32,7 +30,7 @@ body {
 
 #first{
     width: 60%;
-    margin: 75px auto;
+    margin: 4.7em auto;
     padding: 15px;
     text-align: left;
     border-left: 5px solid #89abb0;
@@ -83,4 +81,21 @@ div.row{
 /* фон для div.card в calculator */
 #calc-bg-color{
     background-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Надпись на слайдере карусель */
+.color-for-title{
+    color: #167482;
+}
+
+/*Для заголовка о разработке сайта*/
+.bg-color-work{
+    color: black;
+    padding: 1rem;
+    background-color: #89abb0;
+}
+
+main{
+    max-width:100%;
+    min-height: 800px;
 }
